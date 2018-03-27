@@ -1,4 +1,4 @@
-import { doubleArray, shuffle } from "./utils";
+import { doubleArray, shuffle, generatePositiveNumber } from "./utils";
 
 describe("random number generator", () => {
   it("should double the length the array", () => {
@@ -11,5 +11,10 @@ describe("random number generator", () => {
     actualOutput.forEach(element => (actualSum += element));
     expect(actualOutput.length).toEqual(3);
     expect(actualSum).toEqual(6);
+  });
+
+  it("should return an array of positive numbers", () => {
+    const actual = generatePositiveNumber();
+    expect(actual > 0).toBe(true);
   });
 });

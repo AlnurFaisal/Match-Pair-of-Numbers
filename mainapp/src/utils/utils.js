@@ -21,3 +21,7 @@ export const shuffle = array => {
 
   return array;
 };
+
+export const generatePositiveNumber = () => {
+  return Math.floor(Math.random() * 100 + 1);
+};
