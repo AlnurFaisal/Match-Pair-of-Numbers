@@ -1,0 +1,6 @@
+.css-grid-container {
+    max-width: 160px;
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+
+}
