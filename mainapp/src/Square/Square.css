@@ -2,8 +2,7 @@
     border: solid 2px black;
     text-align: center;
     padding: 40px 40px;
-    background: red;
-    color: white;
+    background: white;
 }
 
 .point{
@@ -12,8 +11,15 @@
 
 .match{
     background: green;
-    color:white;
     border: solid 2px black;
     text-align: center;
     padding: 40px 40px;
+}
+
+#show {
+    color: black
+}
+
+#hide {
+    color: lightgray
 }

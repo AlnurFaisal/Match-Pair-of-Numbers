@@ -26,6 +26,8 @@ class Game extends Component {
                   <Square
                     index={i}
                     key={i}
+                    toggleShow={this.toggleShow.bind(this, i)}
+                    toggleShowForPair={this.toggleShowForPair.bind(this, i)}
                     numberObj={element}
                     setCurrentValue={this.setCurrentValue.bind(this)}
                     setCurrentIndex={this.setCurrentIndex.bind(this)}
@@ -40,6 +42,31 @@ class Game extends Component {
         </div>
       </div>
     );
+  }
+
+  toggleShow(index) {
+    const copy = [...this.state.gameMap];
+    if (copy[index].show === true) {
+      copy[index].show = false;
+    } else {
+      copy[index].show = true;
+    }
+    this.setState({
+      gameMap: copy
+    });
+  }
+
+  toggleShowForPair(index) {
+    const copy = [...this.state.gameMap];
+    if (copy[index].show === true) {
+      copy[index].show = false;
+      copy[this.state.currentIndex].show = false;
+    } else {
+      copy[index].show = true;
+    }
+    this.setState({
+      gameMap: copy
+    });
   }
 
   setCurrentValue(element) {
@@ -79,15 +106,15 @@ class Game extends Component {
 
   genRandomNumbers() {
     let arr = [];
-    const ITERATIONS = 3;
+    const ITERATIONS = 6;
     for (let i = 0; i < ITERATIONS; i++) {
       arr.push(generatePositiveNumber());
     }
     const doubleArr = doubleArray(arr);
     const shuffleArray = shuffle(doubleArr);
     const gameObj = [];
-    for(let i = 0; i < shuffleArray.length; i++){
-      gameObj[i] = { value: shuffleArray[i], isMatched: false };
+    for (let i = 0; i < shuffleArray.length; i++) {
+      gameObj[i] = { value: shuffleArray[i], isMatched: false, show: false };
     }
     return gameObj;
   }
