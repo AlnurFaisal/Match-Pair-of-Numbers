@@ -16,16 +16,19 @@ class Square extends Component {
   //     event.preventDefault();
   // } else {
 // }
-  handleClick(event) {
+  handleClick(index, event) {
     const currentVal = this.props.getCurrentValue();
     if(currentVal === null){
-        this.props.setCurrentValue(this.props.number);
+        this.props.setCurrentValue(this.props.numberObj.value);
+        this.props.setCurrentIndex(index);
     } else {
-        const checkMatch = this.props.checkIfMatch(this.props.number);
+        const checkMatch = this.props.checkIfMatch(this.props.numberObj.value);
         if(checkMatch === false){
-            // call function to hide numbers
+            // call function to set numbers as not matched
+            
         } else {
             // call function to set numbers as matched    
+            this.props.setMatch(index);
         }
         this.props.setCurrentValue(null);
     }
@@ -35,12 +38,12 @@ class Square extends Component {
 
   render() {
     return (
-      <div className="square1">
+      <div className="square1" className={this.props.numberObj.isMatched ? "match" : "square1"}>
         <h1
           className={this.state.noshow ? "fade point" : "display-4 fade.show"}
-          onClick={this.handleClick.bind(this)}
+          onClick={this.handleClick.bind(this, this.props.index)}
         >
-          {this.props.number}
+          {this.props.numberObj.value}
         </h1>
       </div>
     );

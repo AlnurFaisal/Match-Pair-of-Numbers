@@ -7,13 +7,32 @@ class Game extends Component {
   constructor() {
     super();
     this.state = {
-      gameMap: this.genRandomNumbers(),
-      currentValue: null
+      // gameMap: this.genRandomNumbers(),
+      gameMap: [
+        {
+          value: 1,
+          isMatched: false
+        },
+        {
+          value: 2,
+          isMatched: false
+        },
+        {
+          value: 2,
+          isMatched: false
+        },
+        {
+          value: 1,
+          isMatched: false
+        }
+      ],
+      currentValue: null,
+      currentIndex: null
     };
   }
 
   render() {
-    console.log(this.state.currentValue);
+    console.log(this.state.gameMap);
     return (
       <div className="container">
         <div className="row">
@@ -22,9 +41,12 @@ class Game extends Component {
               {this.state.gameMap.map((element, i) => {
                 return (
                   <Square
+                    index={i}
                     key={i}
-                    number={element}
+                    numberObj={element}
                     setCurrentValue={this.setCurrentValue.bind(this)}
+                    setCurrentIndex={this.setCurrentIndex.bind(this)}
+                    setMatch={this.setMatch.bind(this)}
                     checkIfMatch={this.checkIfMatch.bind(this)}
                     getCurrentValue={this.getCurrentValue.bind(this)}
                   />
@@ -43,7 +65,22 @@ class Game extends Component {
     });
   }
 
-  getCurrentValue(){
+  setCurrentIndex(index) {
+    this.setState({
+      currentIndex: index
+    });
+  }
+
+  setMatch(i) {
+    const copyGameMap = [...this.state.gameMap];
+    copyGameMap[i].isMatched = true;
+    copyGameMap[this.state.currentIndex].isMatched = true;
+    this.setState({
+      GameMap: copyGameMap
+    });
+  }
+
+  getCurrentValue() {
     return this.state.currentValue;
   }
 
@@ -65,7 +102,7 @@ class Game extends Component {
     }
     const doubleArr = doubleArray(arr);
     const shuffleArray = shuffle(doubleArr);
-    //const gameObj = {}
+    // const gameObj = {};
     return shuffleArray;
   }
 }

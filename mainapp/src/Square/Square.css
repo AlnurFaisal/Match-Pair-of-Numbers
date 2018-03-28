@@ -2,8 +2,18 @@
     border: solid 2px black;
     text-align: center;
     padding: 40px 40px;
+    background: red;
+    color: white;
 }
 
 .point{
     cursor: pointer;
+}
+
+.match{
+    background: green;
+    color:white;
+    border: solid 2px black;
+    text-align: center;
+    padding: 40px 40px;
 }
