@@ -7,24 +7,32 @@ class Game extends Component {
   constructor() {
     super();
     this.state ={
-      gameMap:this.genRandomNumbers()
+      gameMap:this.genRandomNumbers(),
+      currentValue: null,
     }
   }
 
   render() {
+    console.log(this.state.currentValue);
     return (
-      <div class="container">
-        <div class="row">
-          <div class="col-md-7 offset-md-1">
+      <div className="container">
+        <div className="row">
+          <div className="col-md-7 offset-md-1">
             <div className="css-grid-container1">
               {this.state.gameMap.map((element, i) => {
-                return <Square key={i} number={element} />;
+                return <Square key={i} number={element} setCurrentValue={this.setCurrentValue.bind(this)}/>;
               })}
             </div>
           </div>
         </div>
       </div>
     );
+  }
+
+  setCurrentValue(element) {
+    this.setState({
+      currentValue: element
+    })
   }
 
   genRandomNumbers() {
