@@ -1,14 +1,43 @@
-import React from "react";
+import React, { Component } from "react";
 import "./Square.css";
 
-const Square = props => {
-    return (
-        
-        <div className="square1">
-            <h1 class="display-4">{props.number}</h1>
-        </div>
+class Square extends Component{
+    constructor() {
+        super();
+        this.state = {
+           noshow: false
+        }
+    }
+    
+    componentDidMount() {
+        setTimeout(()=> this.setState({noshow: true}), 5000);
+    }
 
-    );
+    handleClick(event) {
+        if(this.state.noshow === false){
+            event.preventDefault(); 
+        } else {
+            
+            this.setState({noshow: false})
+        }
+    }
+
+
+    render(){
+        return (
+            <div className="square1">
+                <h1 
+                    className={this.state.noshow ? 'fade point' : 'display-4 fade.show'}
+                    onClick={this.handleClick.bind(this)}    
+                >{this.props.number}
+                </h1>
+            </div>       
+        );
+    }
 }
+
+
+
+
 
 export default Square;

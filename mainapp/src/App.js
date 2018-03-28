@@ -11,12 +11,13 @@ class App extends Component {
 
   genRandomNumbers() {
     let arr = [];
-    const ITERATIONS = 6;
+    const ITERATIONS = 2;
     for (let i = 0; i < ITERATIONS; i++) {
       arr.push(generatePositiveNumber());
     }
     const doubleArr = doubleArray(arr);
     const shuffleArray = shuffle(doubleArr);
+    //const gameObj = {}
     return shuffleArray;
   }
 }
