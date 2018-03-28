@@ -12,11 +12,11 @@ class Square extends Component {
   componentDidMount() {
     setTimeout(() => this.setState({ noshow: true }), 5000);
   }
-  // if(this.state.noshow === false){
-  //     event.preventDefault();
-  // } else {
-// }
+
   handleClick(index, event) {
+    if(this.state.noshow === false){
+        event.preventDefault();
+    }
     const currentVal = this.props.getCurrentValue();
     if(currentVal === null){
         this.props.setCurrentValue(this.props.numberObj.value);
@@ -38,7 +38,7 @@ class Square extends Component {
 
   render() {
     return (
-      <div className="square1" className={this.props.numberObj.isMatched ? "match" : "square1"}>
+      <div className="square1" className={this.props.numberObj.isMatched ? "match" : "square1 point"}>
         <h1
           className={this.state.noshow ? "fade point" : "display-4 fade.show"}
           onClick={this.handleClick.bind(this, this.props.index)}

@@ -8,24 +8,7 @@ class Game extends Component {
     super();
     this.state = {
       // gameMap: this.genRandomNumbers(),
-      gameMap: [
-        {
-          value: 1,
-          isMatched: false
-        },
-        {
-          value: 2,
-          isMatched: false
-        },
-        {
-          value: 2,
-          isMatched: false
-        },
-        {
-          value: 1,
-          isMatched: false
-        }
-      ],
+      gameMap: this.genRandomNumbers(),
       currentValue: null,
       currentIndex: null
     };
@@ -96,14 +79,17 @@ class Game extends Component {
 
   genRandomNumbers() {
     let arr = [];
-    const ITERATIONS = 2;
+    const ITERATIONS = 3;
     for (let i = 0; i < ITERATIONS; i++) {
       arr.push(generatePositiveNumber());
     }
     const doubleArr = doubleArray(arr);
     const shuffleArray = shuffle(doubleArr);
-    // const gameObj = {};
-    return shuffleArray;
+    const gameObj = [];
+    for(let i = 0; i < shuffleArray.length; i++){
+      gameObj[i] = { value: shuffleArray[i], isMatched: false };
+    }
+    return gameObj;
   }
 }
 
