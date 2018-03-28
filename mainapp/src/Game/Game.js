@@ -26,6 +26,7 @@ class Game extends Component {
                     number={element}
                     setCurrentValue={this.setCurrentValue.bind(this)}
                     checkIfMatch={this.checkIfMatch.bind(this)}
+                    getCurrentValue={this.getCurrentValue.bind(this)}
                   />
                 );
               })}
@@ -42,11 +43,17 @@ class Game extends Component {
     });
   }
 
+  getCurrentValue(){
+    return this.state.currentValue;
+  }
+
   checkIfMatch(value) {
     if (value === this.state.currentValue) {
-      console.log("It's a match!");
+      console.log("its a match");
+      return true;
     } else {
-      console.log("It's not a match!");
+      console.log("not a match");
+      return false;
     }
   }
 
