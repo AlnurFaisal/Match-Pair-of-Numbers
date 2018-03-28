@@ -17,6 +17,7 @@ class Square extends Component{
         if(this.state.noshow === false){
             event.preventDefault(); 
         } else {
+            this.props.checkIfMatch(this.props.number);
             this.props.setCurrentValue(this.props.number);
             this.setState({noshow: false});
         }

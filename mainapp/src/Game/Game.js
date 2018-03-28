@@ -6,10 +6,10 @@ import "./Game.css";
 class Game extends Component {
   constructor() {
     super();
-    this.state ={
-      gameMap:this.genRandomNumbers(),
-      currentValue: null,
-    }
+    this.state = {
+      gameMap: this.genRandomNumbers(),
+      currentValue: null
+    };
   }
 
   render() {
@@ -20,7 +20,14 @@ class Game extends Component {
           <div className="col-md-7 offset-md-1">
             <div className="css-grid-container1">
               {this.state.gameMap.map((element, i) => {
-                return <Square key={i} number={element} setCurrentValue={this.setCurrentValue.bind(this)}/>;
+                return (
+                  <Square
+                    key={i}
+                    number={element}
+                    setCurrentValue={this.setCurrentValue.bind(this)}
+                    checkIfMatch={this.checkIfMatch.bind(this)}
+                  />
+                );
               })}
             </div>
           </div>
@@ -32,7 +39,15 @@ class Game extends Component {
   setCurrentValue(element) {
     this.setState({
       currentValue: element
-    })
+    });
+  }
+
+  checkIfMatch(value) {
+    if (value === this.state.currentValue) {
+      console.log("It's a match!");
+    } else {
+      console.log("It's not a match!");
+    }
   }
 
   genRandomNumbers() {
