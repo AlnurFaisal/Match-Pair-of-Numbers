@@ -10,7 +10,8 @@ class Game extends Component {
       // gameMap: this.genRandomNumbers(),
       gameMap: this.genRandomNumbers(),
       currentValue: null,
-      currentIndex: null
+      currentIndex: null,
+      counter: 0
     };
   }
 
@@ -61,9 +62,7 @@ class Game extends Component {
     if (copy[index].show === true) {
       copy[index].show = false;
       copy[this.state.currentIndex].show = false;
-    } else {
-      copy[index].show = true;
-    }
+    } 
     this.setState({
       gameMap: copy
     });

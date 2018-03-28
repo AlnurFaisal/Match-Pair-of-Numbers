@@ -2,24 +2,27 @@
     border: solid 2px black;
     text-align: center;
     padding: 40px 40px;
-    background: white;
+    background: red;
+    color:white;
 }
 
-.point{
+.cursorpoint{
     cursor: pointer;
 }
 
 .match{
     background: green;
+    color:white;
     border: solid 2px black;
     text-align: center;
     padding: 40px 40px;
 }
 
 #show {
-    color: black
+    opacity: 1;
 }
 
 #hide {
-    color: lightgray
+    opacity: 0;
+    transition: opacity 0.15s linear;
 }

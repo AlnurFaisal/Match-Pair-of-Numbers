@@ -1,9 +1,18 @@
 import React, { Component } from "react";
 import "./Square.css";
+import SquareItem from "../SquareItem/SquareItem";
 
 class Square extends Component {
-  constructor() {
+
+  constructor(){
     super();
+    this.state = {
+      toHide: false
+    }
+  }
+
+  componentDidMount() {
+    setTimeout(() => this.setState({ toHide: true }), 5000);
   }
 
   handleClick(index, event) {
@@ -25,18 +34,19 @@ class Square extends Component {
     }
   }
 
+  gettoHide() {
+    return this.state.toHide;
+  }
+
   render() {
+    console.log(this.state.toHide);
     const showOrHideCssProperty = this.props.numberObj.show ? "show" : "hide";
+    const isMatch = this.props.numberObj.isMatched ? "match" : "square1 cursorpoint";
 
     return (
-      <div
-        id={showOrHideCssProperty}
-        className={this.props.numberObj.isMatched ? "match" : "square1 point"}
-      >
-        <h1 onClick={this.handleClick.bind(this, this.props.index)}>
-          {this.props.numberObj.value}
-        </h1>
-      </div>
+      <SquareItem handleClick={this.handleClick.bind(this, this.props.index)} 
+      numberObj={this.props.numberObj} gettoHide={this.gettoHide.bind(this)} 
+      showOrHideCssProperty={showOrHideCssProperty} isMatch={isMatch} />
     );
   }
 }
