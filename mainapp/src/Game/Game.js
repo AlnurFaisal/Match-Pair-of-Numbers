@@ -9,16 +9,18 @@ class Game extends Component {
     this.state = {
       gameMap: this.genRandomNumbers(props.gameLevel.squares),
       currentValue: null,
-      currentIndex: null
+      currentIndex: null,
+      countMatches: 0
     };
   }
 
   render() {
+    console.log(this.state.countMatches);
     return (
       <div className="container-fluid">
         <div className="row">
-          <div className="col-md-7">
-            <div className="css-grid-container1">
+          <div className="col-md-9">
+            <div className="css-grid-container1 game">
               {this.state.gameMap.map((element, i) => {
                 return (
                   <Square
@@ -37,6 +39,18 @@ class Game extends Component {
                 );
               })}
             </div>
+          </div>
+          <div className="col-md-3">
+          <div className="card game">
+          <div className="card-body">
+              <h6 className="card-title">Current Level: Level {this.props.gameLevel.level}</h6>
+              <div className="card-body">
+                {}
+              </div>
+              <p className="card-text">With supporting text below as a natural lead-in to additional content.</p>
+              <a href="" className="btn btn-primary">Go somewhere</a>
+          </div>
+          </div>
           </div>
         </div>
       </div>
@@ -65,7 +79,7 @@ class Game extends Component {
           gameMap: copy
         });
       }
-    } , 900) 
+    } , 500) 
   }
 
   setCurrentValue(element) {
@@ -101,6 +115,10 @@ class Game extends Component {
 
   checkIfMatch(value, index) {
     if (value === this.state.currentValue && index !== this.state.currentIndex) {
+      const copyCountMatches = this.state.countMatches + 2;
+      this.setState({
+        countMatches: copyCountMatches
+      }); 
       return true;
     } else {
       return false;

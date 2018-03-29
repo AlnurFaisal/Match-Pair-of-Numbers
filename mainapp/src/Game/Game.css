@@ -1,8 +1,15 @@
 .css-grid-container1 {
-    margin-top: 20px;
     border: 2px black;
     border-style: solid;
-    background: grey;
+    background: black;
     display:grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+
+.game{
+    margin-top: 20px;  
+}
+
+.card-body{
+    text-align: center;
 }

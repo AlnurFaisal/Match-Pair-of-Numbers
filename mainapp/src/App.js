@@ -8,7 +8,7 @@ class App extends Component {
     super();
     this.state={
       gameLevels:[{level: 1, squares: 3}, {level: 2, squares: 4}, {level: 3, squares: 6}, 
-        {level: 4, squares: 8}, {level: 5, squares: 12}],
+        {level: 4, squares: 8}, {level: 5, squares: 12}, {level: 6, squares: 15}],
       currentLevel: 0
     };
   }
