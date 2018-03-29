@@ -3,7 +3,7 @@ import Square from "./Square";
 import { shallow } from 'enzyme';
 
 describe('Square Component', () => {
-    it('should show the values in the box', () => {
+    it('should generate a game map', () => {
         const element = {value: 1, isMatched: false, show:false};
         const wrapper = shallow(<Square  numberObj={element}/>);
         
