@@ -15,7 +15,6 @@ class Game extends Component {
   }
 
   render() {
-    console.log(this.state.gameMap);
     return (
       <div className="container">
         <div className="row">
@@ -59,13 +58,15 @@ class Game extends Component {
 
   toggleShowForPair(index) {
     const copy = [...this.state.gameMap];
-    if (copy[index].show === true) {
-      copy[index].show = false;
-      copy[this.state.currentIndex].show = false;
-    } 
-    this.setState({
-      gameMap: copy
-    });
+    setTimeout(() => {
+      if (copy[index].show === true) {
+        copy[index].show = false;
+        copy[this.state.currentIndex].show = false;
+        this.setState({
+          gameMap: copy
+        });
+      }
+    } , 1000) 
   }
 
   setCurrentValue(element) {
@@ -101,10 +102,8 @@ class Game extends Component {
 
   checkIfMatch(value) {
     if (value === this.state.currentValue) {
-      console.log("its a match");
       return true;
     } else {
-      console.log("not a match");
       return false;
     }
   }

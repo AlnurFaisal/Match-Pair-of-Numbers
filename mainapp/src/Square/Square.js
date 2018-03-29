@@ -39,7 +39,6 @@ class Square extends Component {
   }
 
   render() {
-    console.log(this.state.toHide);
     const showOrHideCssProperty = this.props.numberObj.show ? "show" : "hide";
     const isMatch = this.props.numberObj.isMatched ? "match" : "square1 cursorpoint";
 
