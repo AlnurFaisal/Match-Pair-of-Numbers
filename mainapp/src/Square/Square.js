@@ -46,7 +46,8 @@ class Square extends Component {
     return (
       <SquareItem handleClick={this.handleClick.bind(this, this.props.index)} 
       numberObj={this.props.numberObj} gettoHide={this.gettoHide.bind(this)} 
-      showOrHideCssProperty={showOrHideCssProperty} isMatch={isMatch} />
+      showOrHideCssProperty={showOrHideCssProperty} isMatch={isMatch}
+      getMatches={this.props.getMatches} />
     );
   }
 }

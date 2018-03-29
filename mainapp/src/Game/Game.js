@@ -10,8 +10,7 @@ class Game extends Component {
       // gameMap: this.genRandomNumbers(),
       gameMap: this.genRandomNumbers(),
       currentValue: null,
-      currentIndex: null,
-      counter: 0
+      currentIndex: null
     };
   }
 
@@ -35,6 +34,7 @@ class Game extends Component {
                     setMatch={this.setMatch.bind(this)}
                     checkIfMatch={this.checkIfMatch.bind(this)}
                     getCurrentValue={this.getCurrentValue.bind(this)}
+                    getMatches={this.getMatches.bind(this, i)}
                   />
                 );
               })}
@@ -85,12 +85,18 @@ class Game extends Component {
     copyGameMap[i].isMatched = true;
     copyGameMap[this.state.currentIndex].isMatched = true;
     this.setState({
-      GameMap: copyGameMap
+      gameMap: copyGameMap
     });
   }
 
   getCurrentValue() {
     return this.state.currentValue;
+  }
+
+  getMatches(index) {
+    const copy = [...this.state.gameMap];
+    const isMatched = copy[index].isMatched;
+    return isMatched;
   }
 
   checkIfMatch(value) {

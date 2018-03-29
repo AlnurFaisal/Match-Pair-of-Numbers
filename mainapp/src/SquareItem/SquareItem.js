@@ -4,9 +4,14 @@ import SquareRender2 from "./SquareRender2";
 
 const SquareItem = (props) => {
     const toHide = props.gettoHide();
+    const isMatched = props.getMatches();
     if(toHide){
-        return <SquareRender1 handleClick={props.handleClick} numberObj={props.numberObj} 
-        showOrHideCssProperty={props.showOrHideCssProperty} isMatch={props.isMatch} />;
+        if(isMatched === true){
+            return <SquareRender2 numberObj={props.numberObj} isMatch={props.isMatch} />;
+        } else {
+            return <SquareRender1 handleClick={props.handleClick} numberObj={props.numberObj} 
+            showOrHideCssProperty={props.showOrHideCssProperty} isMatch={props.isMatch} />;
+        }
     } else {
         return <SquareRender2 numberObj={props.numberObj} isMatch={props.isMatch} />;
     }
