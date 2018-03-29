@@ -7,7 +7,7 @@ class Game extends Component {
   constructor(props) {
     super();
     this.state = {
-      gameMap: this.genRandomNumbers(props.gameLevel),
+      gameMap: this.genRandomNumbers(props.gameLevel.squares),
       currentValue: null,
       currentIndex: null
     };
@@ -15,9 +15,9 @@ class Game extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="container-fluid">
         <div className="row">
-          <div className="col-md-7 offset-md-1">
+          <div className="col-md-7">
             <div className="css-grid-container1">
               {this.state.gameMap.map((element, i) => {
                 return (
@@ -65,7 +65,7 @@ class Game extends Component {
           gameMap: copy
         });
       }
-    } , 1000) 
+    } , 900) 
   }
 
   setCurrentValue(element) {
@@ -99,8 +99,8 @@ class Game extends Component {
     return isMatched;
   }
 
-  checkIfMatch(value) {
-    if (value === this.state.currentValue) {
+  checkIfMatch(value, index) {
+    if (value === this.state.currentValue && index !== this.state.currentIndex) {
       return true;
     } else {
       return false;

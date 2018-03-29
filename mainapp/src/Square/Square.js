@@ -22,7 +22,7 @@ class Square extends Component {
       this.props.setCurrentValue(this.props.numberObj.value);
       this.props.setCurrentIndex(index);
     } else {
-      const checkMatch = this.props.checkIfMatch(this.props.numberObj.value);
+      const checkMatch = this.props.checkIfMatch(this.props.numberObj.value, index);
       if (checkMatch === false) {
         this.props.toggleShowForPair(index);
         // call function to set numbers as not matched
