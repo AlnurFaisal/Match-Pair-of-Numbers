@@ -5,7 +5,7 @@ import Game from "./Game/Game";
 
 class App extends Component {
   render() {
-    return <Game />;
+    return <Game gameLevel={16} />;
   }
 
 }

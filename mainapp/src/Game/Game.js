@@ -4,11 +4,10 @@ import { doubleArray, shuffle, generatePositiveNumber } from "../utils/utils";
 import "./Game.css";
 
 class Game extends Component {
-  constructor() {
+  constructor(props) {
     super();
     this.state = {
-      // gameMap: this.genRandomNumbers(),
-      gameMap: this.genRandomNumbers(),
+      gameMap: this.genRandomNumbers(props.gameLevel),
       currentValue: null,
       currentIndex: null
     };
@@ -108,9 +107,9 @@ class Game extends Component {
     }
   }
 
-  genRandomNumbers() {
+  genRandomNumbers(gameLevel) {
     let arr = [];
-    const ITERATIONS = 6;
+    const ITERATIONS = gameLevel;
     for (let i = 0; i < ITERATIONS; i++) {
       arr.push(generatePositiveNumber());
     }
