@@ -3,6 +3,7 @@ import Square from "../Square/Square";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { doubleArray, shuffle, generatePositiveNumber } from "../utils/utils";
 import "./Game.css";
+import successlogo from '../img/ok.svg';
 
 class Game extends Component {
   constructor(props) {
@@ -60,7 +61,9 @@ class Game extends Component {
                 <p className="card-text">Score: {}</p>
                 <div class="row">
                   <div class="col-md-7">
-                    <a href="#" onClick={this.props.levelUp} className={this.state.completed ? "btn btn-success bigbutton" : "btn btn-success bigbutton disabled"}>Continue</a>
+                    <Button color="success" onClick={this.props.levelUp} 
+                    className={this.state.completed ? "btn btn-success bigbutton" : "btn btn-success bigbutton disabled"} 
+                    >Continue</Button>
                   </div>
                   <div class="col-md-5">
                     <a href="" className="btn btn-primary smallbutton">Quit</a>
@@ -73,7 +76,8 @@ class Game extends Component {
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
         <ModalHeader toggle={this.toggle}>Level {this.props.gameLevel.level} Completed</ModalHeader>
         <ModalBody>
-            <h1 class="display-4 alignp">Congratulations!!</h1> <p class="lead alignp">Please proceed to next level!</p>
+            <img src={successlogo} alt="Success" height="100" width="100" className="image1" />
+            <h2 class="alignp">Congratulations!!</h2> <p class="lead alignp">Please proceed to next level!</p>
         </ModalBody>
         <ModalFooter>
           <Button color="primary" onClick={this.toggle}>Close</Button>

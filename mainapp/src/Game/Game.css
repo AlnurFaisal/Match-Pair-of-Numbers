@@ -16,6 +16,11 @@
     border-top-color: blue; 
 }
 
+.image1{
+    margin: auto;
+    width: 100%;
+    padding: 10px 10px;
+}
 
 .bigbutton{
     padding: 10px 45px;

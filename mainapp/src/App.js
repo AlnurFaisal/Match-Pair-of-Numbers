@@ -15,22 +15,21 @@ class App extends Component {
 
   setGameLevel(level) {
     const copyGameLevels = [...this.state.gameLevels];
-    if(level === undefined){
-      const copyCurrentLevel = this.state.currentLevel;
-      return copyGameLevels[copyCurrentLevel];
-    } else {
-      console.log("i am here!");
-      return copyGameLevels[level];
-    }
+    console.log("i am here!");
+    return copyGameLevels[level];
   }  
 
   levelUp() {
     let copyLevel = this.state.currentLevel;
     copyLevel = copyLevel + 1;
-    this.setGameLevel.bind(this)(copyLevel);
     this.setState({
       currentLevel: copyLevel
     });
+  }
+
+  getCurrentLevel(){
+    const copyCurrentLevel = this.state.currentLevel;
+    return copyCurrentLevel;
   }
 
 
@@ -38,7 +37,7 @@ class App extends Component {
     return(
       <div>
         <br /><br />
-        <Game gameLevel={this.setGameLevel.bind(this)()} levelUp={this.levelUp.bind(this)} />;
+        <Game gameLevel={this.setGameLevel.bind(this)(this.getCurrentLevel())} levelUp={this.levelUp.bind(this)} />;
       </div>
     ); 
   }
