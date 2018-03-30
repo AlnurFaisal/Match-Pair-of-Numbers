@@ -1,19 +1,13 @@
 import React from 'react';
 import Home from "../Home/Home";
-import GameController from "./GameController/GameController";
+import Home2 from '../Home/Home2';
 
 const HomeController = (props) => {
-    const start = props.startGame();
-    if(start === false){
-        return <Home />;
+    if(props.start === false){
+        return <Home start={props.start} />;
     } else {
-        return(
-            <div>
-              <br /><br />
-              <GameController gameLevel={this.setGameLevel.bind(this)} levelUp={this.levelUp.bind(this)} 
-              getCurrentLevel={this.getCurrentLevel.bind(this)} />;
-            </div>
-        ); 
+        return <Home2 />;
+        
     }
 };
 

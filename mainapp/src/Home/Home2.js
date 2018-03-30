@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import GameController from "../GameController/GameController";
 
 class Home2 extends Component {
   constructor() {

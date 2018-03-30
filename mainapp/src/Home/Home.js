@@ -1,35 +1,35 @@
-import React, { Component } from 'react';
-import { Button, Jumbotron } from 'reactstrap';
+import React, { Component } from "react";
+import { Button, Jumbotron, Container } from "reactstrap";
 
 class Home extends Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            startGame: false
-        }
-    }
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
 
-    startGame() {
-        this.setState({
-           start: true 
-        });
-    }
+  render() {
+    return (
+      <div>
+        <Jumbotron fluid>
+          <Container fluid>
+            <h1 className="display-2">Find The Pair</h1>
+            <p className="lead">Click on the button below to begin!</p>
+          </Container>
+        </Jumbotron>
 
-    render() {
-        return (
-            <div>
-                <div class="jumbotron jumbotron-fluid">
-                    <div class="container">
-                        <h1 class="display-2">Find The Pair</h1>
-                        <p class="lead">Click on the button below to begin!</p>
-                    </div>
-                </div>
-                <div class="container-fluid">
-                    <button type="button" onClick={this.startGame.bind(this)()} class="btn btn-outline-success btn-lg">Large button</button>
-                </div>
-            </div>
-        );
-    }
+        <div class="container-fluid">
+          <Button
+            outline
+            color="success"
+            onClick={this.props.start()}
+            size="lg"
+          >
+            Begin
+          </Button>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default Home;

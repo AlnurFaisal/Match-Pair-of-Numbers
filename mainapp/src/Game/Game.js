@@ -61,12 +61,12 @@ class Game extends Component {
                 <p className="card-text">Score: {}</p>
                 <div class="row">
                   <div class="col-md-7">
-                    <Button color="success" onClick={this.props.levelUp} 
+                    <Button size="lg" color="success" onClick={this.props.levelUp} 
                     className={this.state.completed ? "btn btn-success bigbutton" : "btn btn-success bigbutton disabled"} 
                     >Continue</Button>
                   </div>
                   <div class="col-md-5">
-                    <a href="" className="btn btn-primary smallbutton">Quit</a>
+                    <Button size="lg" color="primary">Quit</Button>
                   </div>
                 </div>
             </div>
