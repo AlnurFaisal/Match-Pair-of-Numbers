@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import Game from "./Game/Game";
+import GameController from "./GameController/GameController";
 
 class App extends Component {
   constructor(){
     super();
     this.state={
-      gameLevels:[{level: 1, squares: 3}, {level: 2, squares: 4}, {level: 3, squares: 6}, 
-        {level: 4, squares: 8}, {level: 5, squares: 12}, {level: 6, squares: 15}],
+      gameLevels:[{level: 1, squares: 4}, {level: 2, squares: 6}, 
+        {level: 3, squares: 8}, {level: 4, squares: 12}, {level: 5, squares: 15}],
       currentLevel: 0
     };
   }
@@ -37,7 +37,8 @@ class App extends Component {
     return(
       <div>
         <br /><br />
-        <Game gameLevel={this.setGameLevel.bind(this)(this.getCurrentLevel())} levelUp={this.levelUp.bind(this)} />;
+        <GameController gameLevel={this.setGameLevel.bind(this)} levelUp={this.levelUp.bind(this)} 
+        getCurrentLevel={this.getCurrentLevel.bind(this)} />;
       </div>
     ); 
   }
