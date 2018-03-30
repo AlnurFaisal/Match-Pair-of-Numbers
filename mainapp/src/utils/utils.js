@@ -25,3 +25,4 @@ export const shuffle = array => {
 export const generatePositiveNumber = () => {
   return Math.floor(Math.random() * 100 + 1);
 };
+
