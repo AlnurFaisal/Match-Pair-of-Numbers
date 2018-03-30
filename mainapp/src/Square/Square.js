@@ -31,6 +31,8 @@ class Square extends Component {
         this.props.setMatch(index);
       }
       this.props.setCurrentValue(null);
+      // call parent function to check whether all is matched
+      this.props.popup();
     }
   }
 

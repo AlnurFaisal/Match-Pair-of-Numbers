@@ -1,60 +1,100 @@
 import React, { Component } from "react";
 import Square from "../Square/Square";
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { doubleArray, shuffle, generatePositiveNumber } from "../utils/utils";
 import "./Game.css";
 
 class Game extends Component {
   constructor(props) {
-    super();
+    super(props);
     this.state = {
       gameMap: this.genRandomNumbers(props.gameLevel.squares),
       currentValue: null,
       currentIndex: null,
-      countMatches: 0
+      countMatches: 0,
+      completed: false,
+      modal: false
     };
+
+    this.toggle = this.toggle.bind(this);
+  }
+
+  toggle() {
+    this.setState({
+      modal: !this.state.modal
+    });
   }
 
   render() {
     console.log(this.state.countMatches);
+    console.log(this.state.gameMap);
     return (
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-9">
-            <div className="css-grid-container1 game">
+            <div className="css-grid-container1">
               {this.state.gameMap.map((element, i) => {
                 return (
-                  <Square
-                    index={i}
-                    key={i}
-                    toggleShow={this.toggleShow.bind(this, i)}
-                    toggleShowForPair={this.toggleShowForPair.bind(this, i)}
-                    numberObj={element}
-                    setCurrentValue={this.setCurrentValue.bind(this)}
-                    setCurrentIndex={this.setCurrentIndex.bind(this)}
-                    setMatch={this.setMatch.bind(this)}
-                    checkIfMatch={this.checkIfMatch.bind(this)}
-                    getCurrentValue={this.getCurrentValue.bind(this)}
-                    getMatches={this.getMatches.bind(this, i)}
-                  />
+                    <Square
+                      index={i}
+                      key={i}
+                      toggleShow={this.toggleShow.bind(this, i)}
+                      toggleShowForPair={this.toggleShowForPair.bind(this, i)}
+                      numberObj={element}
+                      setCurrentValue={this.setCurrentValue.bind(this)}
+                      setCurrentIndex={this.setCurrentIndex.bind(this)}
+                      setMatch={this.setMatch.bind(this)}
+                      checkIfMatch={this.checkIfMatch.bind(this)}
+                      getCurrentValue={this.getCurrentValue.bind(this)}
+                      getMatches={this.getMatches.bind(this, i)}
+                      popup={this.popup.bind(this)}
+                    />
                 );
               })}
             </div>
           </div>
           <div className="col-md-3">
-          <div className="card game">
-          <div className="card-body">
-              <h6 className="card-title">Current Level: Level {this.props.gameLevel.level}</h6>
-              <div className="card-body">
-                {}
-              </div>
-              <p className="card-text">With supporting text below as a natural lead-in to additional content.</p>
-              <a href="" className="btn btn-primary">Go somewhere</a>
-          </div>
+          <div className="card">
+            <div className="card-body game">
+                <h6 className="card-title">Current Level: Level {this.props.gameLevel.level}</h6>
+                <p className="card-text">Score: {}</p>
+                <div class="row">
+                  <div class="col-md-7">
+                    <a href="#" onClick={this.props.levelUp} className={this.state.completed ? "btn btn-success bigbutton" : "btn btn-success bigbutton disabled"}>Continue</a>
+                  </div>
+                  <div class="col-md-5">
+                    <a href="" className="btn btn-primary smallbutton">Quit</a>
+                  </div>
+                </div>
+            </div>
           </div>
           </div>
         </div>
+        <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+        <ModalHeader toggle={this.toggle}>Level {this.props.gameLevel.level} Completed</ModalHeader>
+        <ModalBody>
+            <h1 class="display-4 alignp">Congratulations!!</h1> <p class="lead alignp">Please proceed to next level!</p>
+        </ModalBody>
+        <ModalFooter>
+          <Button color="primary" onClick={this.toggle}>Close</Button>
+        </ModalFooter>
+        </Modal>
       </div>
     );
+  }
+
+  popup(){
+    const copy = [...this.state.gameMap];
+    const copyCountMatches = this.state.countMatches + 2;
+    const size = Object.keys(copy).length; 
+    if(copyCountMatches !== 0){
+      if(copyCountMatches === size){
+        this.toggle();
+        this.setState({
+          completed: true
+        });
+      }
+    }
   }
 
   toggleShow(index) {

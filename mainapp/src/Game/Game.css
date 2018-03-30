@@ -6,10 +6,25 @@
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 }
 
-.game{
-    margin-top: 20px;  
+.alignp{
+    text-align: center;
 }
 
-.card-body{
+.game{
+    border-top-style: solid;
+    border-top-width: 6px;
+    border-top-color: blue; 
+}
+
+
+.bigbutton{
+    padding: 10px 45px;
+}
+
+.smallbutton{
+    padding: 10px 30px;
+}
+
+.card-title, .card-text{
     text-align: center;
 }
