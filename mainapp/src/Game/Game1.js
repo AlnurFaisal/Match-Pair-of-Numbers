@@ -50,6 +50,7 @@ class Game1 extends Component {
                     getCurrentValue={this.getCurrentValue.bind(this)}
                     getMatches={this.getMatches.bind(this, i)}
                     popup={this.popup.bind(this)}
+                    timer={this.props.gameLevel.time}
                   />
                 );
               })}
@@ -61,9 +62,9 @@ class Game1 extends Component {
                 <h6 className="card-title">
                   Current Level: Level {this.props.gameLevel.level}
                 </h6>
-                <p className="card-text">Score: {}</p>
-                <div class="row">
-                  <div class="col-md-7">
+                <p className="card-text">Score: {this.state.completed ? this.props.gameLevel.points : 5}</p>
+                <div className="row">
+                  <div className="col-md-7">
                     <Button
                       color="success"
                       size="lg"
@@ -77,8 +78,8 @@ class Game1 extends Component {
                       Continue
                     </Button>
                   </div>
-                  <div class="col-md-5">
-                    <Link to ="/" class="btn btn primary smallbutton">Quit</Link>
+                  <div className="col-md-5">
+                    <Link to ="/" className="btn btn primary">Quit</Link>
                   </div>
                 </div>
               </div>
@@ -101,8 +102,8 @@ class Game1 extends Component {
               width="100"
               className="image1"
             />
-            <h2 class="alignp">Congratulations!!</h2>{" "}
-            <p class="lead alignp">Please proceed to next level!</p>
+            <h2 className="alignp">Congratulations!!</h2>{" "}
+            <p className="lead alignp">Please proceed to next level!</p>
           </ModalBody>
           <ModalFooter>
             <Button color="primary" onClick={this.toggle}>

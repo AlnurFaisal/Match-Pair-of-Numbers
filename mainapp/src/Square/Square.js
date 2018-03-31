@@ -12,7 +12,7 @@ class Square extends Component {
   }
 
   componentDidMount() {
-    setTimeout(() => this.setState({ toHide: true }), 5000);
+    setTimeout(() => this.setState({ toHide: true }), this.props.timer);
   }
 
   handleClick(index, event) {

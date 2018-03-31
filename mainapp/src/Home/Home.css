@@ -1,0 +1,26 @@
+#sec-one {
+    background-color: #FFEA00;
+    height: 300px;
+    width: 100%;
+    padding: 20px 20px;
+    color: black;
+    font-weight: 900;
+    font-size: 40px;
+    margin-top: 80px;
+    border-top: #1A237E;
+    border-top-style: solid;
+    border-top-width: 8px;
+    border-bottom: #1A237E;
+    border-bottom-style: solid;
+    border-bottom-width: 8px;
+}
+
+.hometitle{
+    font-weight: 900;
+    font-size: 100px; 
+}
+
+.hometext{
+    font-weight: 300;
+    font-size: 30px;
+}
