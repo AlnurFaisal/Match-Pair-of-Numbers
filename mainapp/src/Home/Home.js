@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Button, Jumbotron, Container } from "reactstrap";
+import { Jumbotron, Container } from "reactstrap";
+import { Link } from 'react-router-dom';
 
 class Home extends Component {
   constructor(props) {
@@ -18,14 +19,7 @@ class Home extends Component {
         </Jumbotron>
 
         <div class="container-fluid">
-          <Button
-            outline
-            color="success"
-            onClick={this.props.start()}
-            size="lg"
-          >
-            Begin
-          </Button>
+        <Link to ="/game" class="btn btn primary smallbutton">Begin</Link>
         </div>
       </div>
     );

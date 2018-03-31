@@ -1,17 +1,18 @@
 import React, { Component } from "react";
-import Home2 from "./Home/Home2";
+import { BrowserRouter } from 'react-router-dom';
+import HomeNav from "./Home/HomeNav";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
 class App extends Component {
-  constructor() {
-    super();
-    this.state = {};
-  }
-
   render() {
-   return <Home2 />;
-
+   return (
+     <div>
+      <BrowserRouter>
+        <HomeNav /> 
+      </BrowserRouter>
+     </div>
+   );
   }
 }
 

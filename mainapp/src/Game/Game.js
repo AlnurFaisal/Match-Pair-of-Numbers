@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Square from "../Square/Square";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { doubleArray, shuffle, generatePositiveNumber } from "../utils/utils";
+import { Link } from 'react-router-dom';
 import "./Game.css";
 import successlogo from '../img/ok.svg';
 
@@ -62,11 +63,11 @@ class Game extends Component {
                 <div class="row">
                   <div class="col-md-7">
                     <Button size="lg" color="success" onClick={this.props.levelUp} 
-                    className={this.state.completed ? "btn btn-success bigbutton" : "btn btn-success bigbutton disabled"} 
+                    className={this.state.completed ? "btn btn-success" : "btn btn-success disabled"} 
                     >Continue</Button>
                   </div>
                   <div class="col-md-5">
-                    <Button size="lg" color="primary">Quit</Button>
+                    <Link to ="/" class="btn btn primary smallbutton">Quit</Link>
                   </div>
                 </div>
             </div>
