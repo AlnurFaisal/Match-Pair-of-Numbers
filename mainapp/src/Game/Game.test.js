@@ -5,8 +5,9 @@ import { shallow } from "enzyme";
 describe("Game Component", () => {
   it("should generate the game component", () => {
     const element = { value: 1, isMatched: false, show: false };
-    const wrapper = shallow(<Game />);
-
-    expect(wrapper.find("Square")).toHaveLength(12);
+    const myMockFunction = jest.fn(4);
+    const wrapper = shallow(<Game gameLevel="4" />);
+    console.log(wrapper.find("Square"));
+    expect(wrapper).toHaveLength(1);
   });
 });
