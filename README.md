@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/AlnurFaisal/Match-Pair-of-Numbers.svg?branch=master)](https://travis-ci.org/AlnurFaisal/Match-Pair-of-Numbers)
 # Find Matching Pair of Numbers
 
 A game that allow users to find **pairs of numbers and match them**. It is good memory renention exercise.
