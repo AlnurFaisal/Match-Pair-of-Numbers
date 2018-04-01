@@ -1,0 +1,16 @@
+language: node_js
+node_js:
+- '9'
+cache:
+  directories:
+  - node_modules
+script:
+- yarn test
+- yarn build
+deploy:
+  provider: heroku
+  app: lychee-pudding-51897
+  on:
+    repo: AlnurFaisal/Match-Pair-of-Numbers
+dd:
+  secure: bRvrCMVSi6OCApZMavq/FeEp7MtnYN+l1fiDikxDxsFI31Rx7CKETL4a4dRu0oXqV+NlZipwlTxkmk5eLAxG/ZqTrJQH74dYozqBUnaeLkJJ2E/07YkBBdYnCNe1+Zp3Y0jDuA+gflDSzO4n2nabyfDuBYAt/5TwpEaFv6ppW/EBpG4mYjoI9+8wf35wd8sbj5jX83uOGzynhMfSIvlVduGeSzFZWTem5zQobzbL40o9CCC5STytpwZnA7xMS1zVlGwxOQYH4Diho+sbJNIhS9GVCsrus6Pc1WULzST7qhEeS3YCEIxkXF9oXUkncDp0x0QD/wjo7wegiYXWENatDv1s1uNlRG9vxBH6tNRToYnahLL/ti6axZ06/IEt3ENHO2QrIiVYk629itxTrmqiMAWp9sHaGGuhjpz/AdKDH5IQbcPAZk0OonSLc3KjrB+JH7RVnKSBCliGd4/XpXNUes501V77Un/6fNKAAAS0LfwUcLsGkn/dHYr+oQx+GpUa9Bjq8JzcrhY6bYZrR8+g7xh3PEA2OQsmdw3haC6ueQMgt03jhii5tUI9YvmhiUmn4w0vWyu9/ioWEKF0yD3j8xN5Il1por9v5ca8+OuaGXLynNmgfvwQ2GTmMg/LY5xugu1y3kQElpjDCLs3oPWoqKUwm+7S06aLeNrVlhy7atE=
