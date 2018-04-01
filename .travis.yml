@@ -1,14 +1,16 @@
 language: node_js
 node_js:
-  - "9"
+- '9'
 cache:
   directories:
   - node_modules
 script:
-  - yarn test
-  - yarn build
+- yarn test
+- yarn build
 deploy:
   provider: heroku
-  app: lychee-pudding-51897 # replace this with the name of your heroku app
+  app: lychee-pudding-51897
   on:
-    repo: AlnurFaisal/Match-Pair-of-Numbers   # replace this with your_github_username/your_repo
+    repo: AlnurFaisal/Match-Pair-of-Numbers
+  api_key:
+    secure: S1TFvaTLzbCP4kPyrE9vyttF0XCApWvsAB0jefd1mLba3JE2FLJrh+cZFUtlYcg6ElpixZKiTcdidKxLObljCKIxocoRc8VrSisVlIpqxWY9zZNNbonSxXgKqDTlqWnR3q9YPaZRs3+S8y5MLc1WszBfMEmM0GDG7GHylI/ivNi3ixv885JSMNeuPbDSomyoHtntTK8XBq+xIUf+i1gpwYycCwTNylLbF4bSYkNEARutN+cLQK/Eu9v6WNIu5e0SwZ+Qh2tJlOGIedfeKy6/FACBOKl40DZP0mwsswXCw3bxKlLg4HWFxcvcA3LY9xamzuR9zB7byh/0Y9asVmcrNt8CzsRaPXnWnhzs7potnY0cvDHwclcOxaxE6+4rgfnW5RSrR/R6WXwlL5Fz/TVxRhAGymE6LFbW2CLqOTUgin9xMQy172+Qnk4e6pFfO3Motr0xVcCuAIy5c52bugUKXsfcGP7LPGGd+8tn4BB49+LtRHCSUy5J7J3s2uA5s9n9qfh4HfwsSDPQEwiTD1K3VoyP/pY4kfwxbc/XGrWr26Ef6CHc+SxEcHpzn5gt7q8RyiDiIjeLNxVE+ZbzXf0Q1K4RfMDokqj7gv+PNE5WW3fY6V6RC5AyWSryohqCX/hCfnqVwL65ofNkzLChGyj+rCkW+foaBsootydLcWK1ypo=
