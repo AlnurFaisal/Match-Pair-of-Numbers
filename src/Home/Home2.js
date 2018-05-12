@@ -18,18 +18,21 @@ class Home2 extends Component {
 
   setGameLevel(level) {
     const copyGameLevels = [...this.state.gameLevels];
+    console.log("i am here!");
     return copyGameLevels[level];
   }
 
   levelUp() {
-    // this can be simplified like this:
+    let copyLevel = this.state.currentLevel;
+    copyLevel = copyLevel + 1;
     this.setState({
-      currentLevel: this.state.currentLevel + 1
+      currentLevel: copyLevel
     });
   }
 
   getCurrentLevel() {
-    return this.state.currentLevel
+    const copyCurrentLevel = this.state.currentLevel;
+    return copyCurrentLevel;
   }
 
   render() {
@@ -38,7 +41,7 @@ class Home2 extends Component {
         <br />
         <br />
         <GameController
-          setGameLevel={this.setGameLevel.bind(this)}
+          gameLevel={this.setGameLevel.bind(this)}
           levelUp={this.levelUp.bind(this)}
           getCurrentLevel={this.getCurrentLevel.bind(this)}
         />;
