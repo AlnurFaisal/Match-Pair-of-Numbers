@@ -10,7 +10,8 @@ class Home2 extends Component {
         { level: 2, squares: 6, points: 15, time: 4000 },
         { level: 3, squares: 8, points: 30, time: 6000 },
         { level: 4, squares: 12, points: 50, time: 10000 },
-        { level: 5, squares: 15, points: 75, time: 12000 }
+        { level: 5, squares: 15, points: 75, time: 12000 },
+        { level: 6, squares: 20, points: 100, time: 15000 }
       ],
       currentLevel: 0
     };
@@ -37,14 +38,18 @@ class Home2 extends Component {
 
   render() {
     return (
-      <div>
+      <div className="container-fluid">
         <br />
         <br />
-        <GameController
-          gameLevel={this.setGameLevel.bind(this)}
-          levelUp={this.levelUp.bind(this)}
-          getCurrentLevel={this.getCurrentLevel.bind(this)}
-        />;
+        <div className="row2">
+          <div className="col2-lg-12 col2-xs-12">
+            <GameController
+              gameLevel={this.setGameLevel.bind(this)}
+              levelUp={this.levelUp.bind(this)}
+              getCurrentLevel={this.getCurrentLevel.bind(this)}
+            />;
+          </div>
+        </div>
       </div>
     );
   }

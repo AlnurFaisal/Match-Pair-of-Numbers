@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Square from "../Square/Square";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { doubleArray, shuffle, generatePositiveNumber } from "../utils/utils";
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import "./Game.css";
 import successlogo from '../img/ok.svg';
 
@@ -31,49 +31,49 @@ class Game3 extends Component {
     console.log(this.state.countMatches);
     console.log(this.state.gameMap);
     return (
-      <div className="container-fluid">
-        <div className="row">
-          <div className="col-md-9">
-            <div className="css-grid-container1">
-              {this.state.gameMap.map((element, i) => {
-                return (
-                    <Square
-                      index={i}
-                      key={i}
-                      toggleShow={this.toggleShow.bind(this, i)}
-                      toggleShowForPair={this.toggleShowForPair.bind(this, i)}
-                      numberObj={element}
-                      setCurrentValue={this.setCurrentValue.bind(this)}
-                      setCurrentIndex={this.setCurrentIndex.bind(this)}
-                      setMatch={this.setMatch.bind(this)}
-                      checkIfMatch={this.checkIfMatch.bind(this)}
-                      getCurrentValue={this.getCurrentValue.bind(this)}
-                      getMatches={this.getMatches.bind(this, i)}
-                      popup={this.popup.bind(this)}
-                      timer={this.props.gameLevel.time}
-                    />
-                );
-              })}
-            </div>
+      <div className="row">
+        <div className="col-lg-9 col-md-12 col-xs-12">
+          <div className="css-grid-container1">
+            {this.state.gameMap.map((element, i) => {
+              return (
+                  <Square
+                    index={i}
+                    key={i}
+                    toggleShow={this.toggleShow.bind(this, i)}
+                    toggleShowForPair={this.toggleShowForPair.bind(this, i)}
+                    numberObj={element}
+                    setCurrentValue={this.setCurrentValue.bind(this)}
+                    setCurrentIndex={this.setCurrentIndex.bind(this)}
+                    setMatch={this.setMatch.bind(this)}
+                    checkIfMatch={this.checkIfMatch.bind(this)}
+                    getCurrentValue={this.getCurrentValue.bind(this)}
+                    getMatches={this.getMatches.bind(this, i)}
+                    popup={this.popup.bind(this)}
+                    timer={this.props.gameLevel.time}
+                  />
+              );
+            })}
           </div>
-          <div className="col-md-3">
-          <div className="card">
-            <div className="card-body game">
-                <h6 className="card-title">Current Level: Level {this.props.gameLevel.level}</h6>
-                <p className="card-text">Score: {this.state.completed ? this.props.gameLevel.points : 30}</p>
-                <div className="row">
-                  <div className="col-md-7">
-                    <Button color="success" size="lg" onClick={this.props.levelUp} 
-                    className={this.state.completed ? "btn btn-success" : "btn btn-success disabled"} 
-                    >Continue</Button>
-                  </div>
-                  <div className="col-md-5">
-                    <Link to ="/" className="btn btn primary">Quit</Link>
-                  </div>
+          <br />
+        </div>
+        <div className="col-lg-3 col-md-12 col-xs-12">
+        <div className="card">
+          <div className="card-body game">
+              <h6 className="card-title">Current Level: Level {this.props.gameLevel.level}</h6>
+              <p className="card-text">Score: {this.state.completed ? this.props.gameLevel.points : 30}</p>
+              <div className="row">
+                <div className="col-md-12 col-xs-12">
+                  <Button size="lg" color="success" onClick={this.props.levelUp} 
+                  className={this.state.completed ? "btn btn-success" : "btn btn-success"} 
+                  block disabled={!this.state.completed}>Continue</Button>
+                  <br />
                 </div>
-            </div>
+                <div className="col-md-12 col-xs-12">
+                  <NavLink to ="/" className="btn btn-primary btn-lg btn-block">Quit Game</NavLink>
+                </div>
+              </div>
           </div>
-          </div>
+        </div>
         </div>
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
         <ModalHeader toggle={this.toggle}>Level {this.props.gameLevel.level} Completed</ModalHeader>
@@ -85,7 +85,7 @@ class Game3 extends Component {
           <Button color="primary" onClick={this.toggle}>Close</Button>
         </ModalFooter>
         </Modal>
-      </div>
+    </div>
     );
   }
 
