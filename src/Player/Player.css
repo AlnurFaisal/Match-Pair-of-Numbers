@@ -1,0 +1,38 @@
+.playertitle {
+  font-weight: 900;
+  font-size: 40px;
+  text-align: center;
+}
+
+.styleCard {
+  border-top-style: solid;
+  border-top-width: 10px;
+  border-top-color: blue;
+  padding-top: 0px;
+}
+
+.cardNew {
+  border-radius: 0 !important;
+  border: 0px 0px 0px 0px;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3); 
+}
+
+.wrapper {
+    padding: 50px 20px;
+}
+
+.labelForm {
+    font-weight: 900;
+}

@@ -3,8 +3,8 @@ import { NavLink } from 'react-router-dom';
 import "./Home.css";
 
 class Home extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {};
   }
 
@@ -19,7 +19,7 @@ class Home extends Component {
                   <p className="hometext">Click on the button below to begin!</p>
                 </div>
                 <div className="offset-md-3 col-md-6 col-xs-12">
-                  <NavLink to ="/game" className="btn btn-success btn-lg btn-block">Begin</NavLink>
+                  <NavLink to ="/player" className="btn btn-success btn-lg btn-block">Begin</NavLink>
                 </div>
               </div>
             </div>
