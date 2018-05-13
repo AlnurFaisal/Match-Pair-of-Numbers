@@ -11,7 +11,9 @@ class Home2 extends Component {
         { level: 3, squares: 8, points: 30, time: 6000 },
         { level: 4, squares: 12, points: 50, time: 10000 },
         { level: 5, squares: 15, points: 75, time: 12000 },
-        { level: 6, squares: 20, points: 100, time: 15000 }
+        { level: 6, squares: 20, points: 100, time: 14000 },
+        { level: 7, squares: 25, points: 125, time: 16000 },
+        { level: 8, squares: 30, points: 150, time: 18000 }
       ],
       currentLevel: 0
     };

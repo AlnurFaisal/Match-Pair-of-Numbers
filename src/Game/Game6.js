@@ -6,7 +6,7 @@ import { NavLink } from "react-router-dom";
 import "./Game.css";
 import successlogo from "../img/ok.svg";
 
-class Game5 extends Component {
+class Game6 extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -63,7 +63,7 @@ class Game5 extends Component {
                 Current Level: Level {this.props.gameLevel.level}
               </h6>
               <p className="card-text">
-                Score: {this.state.completed ? this.props.gameLevel.points : 75}
+                Score: {this.state.completed ? this.props.gameLevel.points : 100}
               </p>
               <div className="row">
                 <div className="col-md-12 col-xs-12">
@@ -211,4 +211,4 @@ class Game5 extends Component {
   }
 }
 
-export default Game5;
+export default Game6;

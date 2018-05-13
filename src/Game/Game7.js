@@ -6,7 +6,7 @@ import { NavLink } from "react-router-dom";
 import "./Game.css";
 import successlogo from "../img/ok.svg";
 
-class Game5 extends Component {
+class Game7 extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -63,14 +63,20 @@ class Game5 extends Component {
                 Current Level: Level {this.props.gameLevel.level}
               </h6>
               <p className="card-text">
-                Score: {this.state.completed ? this.props.gameLevel.points : 75}
+                Score: {this.state.completed ? this.props.gameLevel.points : 125}
               </p>
               <div className="row">
                 <div className="col-md-12 col-xs-12">
-                  <Button size="lg" color="success" onClick={this.props.levelUp} 
-                    className={this.state.completed ? "btn btn-success" : "btn btn-success"} 
-                    block disabled={!this.state.completed}>Continue</Button>
-                    <br />
+                  <Button
+                    size="lg"
+                    color="success"
+                    className="btn btn-success"
+                    block
+                    disabled
+                  >
+                    Continue
+                  </Button>
+                  <br />
                 </div>
                 <div className="col-md-12 col-xs-12">
                   <NavLink to="/" className="btn btn-primary btn-lg btn-block">
@@ -98,7 +104,7 @@ class Game5 extends Component {
               className="image1"
             />
             <h2 className="alignp">Congratulations!!</h2>{" "}
-            <p className="lead alignp">Please proceed to next level!</p>
+            <p className="lead alignp">You have successfully completed the game!</p>
           </ModalBody>
           <ModalFooter>
             <Button color="primary" onClick={this.toggle}>
@@ -211,4 +217,4 @@ class Game5 extends Component {
   }
 }
 
-export default Game5;
+export default Game7;
