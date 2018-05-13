@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
 import { Button, Col, Form, FormGroup, Label, Input } from "reactstrap";
+import { Redirect } from "react-router-dom";
 import "./Player.css";
 
 class Player extends Component {
@@ -13,8 +13,8 @@ class Player extends Component {
         score: 0,
         level: 0
       },
-      players: [],
-      redirect: false
+      redirect: false,
+      home: false
     };
 
     this.changeHandlerName = this.changeHandlerName.bind(this);
@@ -23,9 +23,11 @@ class Player extends Component {
   }
 
   render() {
+    console.log(this.props.players);
+    console.log(this.state.player);
     if (this.state.redirect) {
-      return <Redirect to="/game" />;
-    }
+      return <Redirect to="/game"/>;
+    } 
     return (
       <div className="container">
         <div className="row">
@@ -83,8 +85,10 @@ class Player extends Component {
                       </Col>
                     </FormGroup>
                     <FormGroup row>
-                      <Col md={{ size: 10, offset: 2 }}>
-                        <Button size="lg" color="success" type="submit">Submit</Button>
+                      <Col md={{ size: 5, offset: 2 }}>
+                        <Button size="lg" color="success" type="submit">
+                          Submit
+                        </Button>
                       </Col>
                     </FormGroup>
                   </Form>
@@ -94,7 +98,7 @@ class Player extends Component {
           </div>
         </div>
       </div>
-    );
+    ); 
   }
 
   changeHandlerName(event) {
@@ -116,10 +120,10 @@ class Player extends Component {
   handleSubmit(event) {
     event.preventDefault();
     const copyPlayer = { ...this.state.player };
-    const copyPlayers = [...this.state.players];
+    const copyPlayers = [...this.props.players];
     copyPlayers.push(copyPlayer);
+    this.props.updatePlayers(copyPlayers);
     this.setState({
-      players: copyPlayers,
       redirect: true
     });
   }

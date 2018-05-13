@@ -1,31 +1,54 @@
 import React, { Component } from "react";
-import { NavLink } from 'react-router-dom';
+import { Button } from "reactstrap";
 import "./Home.css";
+import Player from "../Player/Player";
 
 class Home extends Component {
   constructor() {
     super();
-    this.state = {};
+    this.state = {
+      players: [],
+      redirect: false
+    };
+
+    this.runRedirect = this.runRedirect.bind(this);
   }
 
   render() {
+    if(this.state.redirect) {
+      return <Player players={this.state.players} updatePlayers={this.updatePlayers.bind(this)}/>;
+    }
     return (
-        <div>
-          <div id="sec-one">
-            <div className="container">
-              <div className="row">
-                <div className="offset-md-1 col-md-10 col-xs-12">
-                  <h1 className="hometitle">Find The Pair</h1>
-                  <p className="hometext">Click on the button below to begin!</p>
-                </div>
-                <div className="offset-md-3 col-md-6 col-xs-12">
-                  <NavLink to ="/player" className="btn btn-success btn-lg btn-block">Begin</NavLink>
-                </div>
+      <div>
+        <div id="sec-one">
+          <div className="container">
+            <div className="row">
+              <div className="offset-md-1 col-md-10 col-xs-12">
+                <h1 className="hometitle">Find The Pair</h1>
+                <p className="hometext">Click on the button below to begin!</p>
+              </div>
+              <div className="offset-md-3 col-md-6 col-xs-12">
+                <Button size="lg" color="success" onClick={this.runRedirect} block>
+                  Begin
+                </Button>
               </div>
             </div>
           </div>
         </div>
+      </div>
     );
+  }
+
+  runRedirect() {
+    this.setState({
+      redirect: true
+    });
+  }
+
+  updatePlayers(arr) {
+    this.setState({
+      players: arr
+    });
   }
 }
 

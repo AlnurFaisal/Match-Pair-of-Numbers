@@ -39,6 +39,8 @@ class Home2 extends Component {
   }
 
   render() {
+    console.log(this.props.currPlayer);
+    console.log(this.props.players);
     return (
       <div className="container-fluid">
         <br />
