@@ -57,7 +57,7 @@ class Game6 extends Component {
           <br />
         </div>
         <div className="col-lg-3 col-md-12 col-xs-12">
-          <div className="card">
+          <div className="cardNew">
             <div className="card-body game">
               <h6 className="card-title">
                 Current Level: Level {this.props.gameLevel.level}

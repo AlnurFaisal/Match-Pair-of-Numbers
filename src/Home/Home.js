@@ -28,7 +28,7 @@ class Home extends Component {
                 <p className="hometext">Click on the button below to begin!</p>
               </div>
               <div className="offset-md-3 col-md-6 col-xs-12">
-                <Button size="lg" color="success" onClick={this.runRedirect} block>
+                <Button size="lg" color="success" onClick={this.runRedirect} className="shadow" block>
                   Begin
                 </Button>
               </div>

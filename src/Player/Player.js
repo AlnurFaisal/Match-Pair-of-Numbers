@@ -26,79 +26,80 @@ class Player extends Component {
     console.log(this.props.players);
     console.log(this.state.player);
     if (this.state.redirect) {
-      return <Redirect to="/game"/>;
-    } 
-    return (
-      <div className="container">
-        <div className="row">
-          <div className="col-md-12 col-xs-12">
-            <br />
-            <br />
-            <div className="wrapper">
-              <div body className="cardNew">
-                <div className="card-body styleCard">
-                  <h1 className="playertitle">Player Info:</h1>
-                  <br />
-                  <Form onSubmit={this.handleSubmit}>
-                    <FormGroup row>
-                      <Label
-                        for="Name"
-                        md={2}
-                        xs={12}
-                        size="lg"
-                        className="labelForm"
-                      >
-                        Name:
-                      </Label>
-                      <Col md={10} xs={12}>
-                        <Input
-                          type="text"
-                          name="Name"
-                          id="Name"
+      return <Redirect to="/game" />;
+    } else {
+      return (
+        <div className="container">
+          <div className="row">
+            <div className="col-md-12 col-xs-12">
+              <br />
+              <br />
+              <div className="wrapper">
+                <div body className="cardNew">
+                  <div className="card-body styleCard">
+                    <h1 className="playertitle">Player Info:</h1>
+                    <br />
+                    <Form onSubmit={this.handleSubmit}>
+                      <FormGroup row>
+                        <Label
+                          for="Name"
+                          md={2}
+                          xs={12}
                           size="lg"
-                          placeholder="Enter your name..."
-                          onChange={this.changeHandlerName}
-                          value={this.state.player.name}
-                        />
-                      </Col>
-                    </FormGroup>
-                    <FormGroup row>
-                      <Label
-                        for="Age"
-                        md={2}
-                        xs={12}
-                        size="lg"
-                        className="labelForm"
-                      >
-                        Age:
-                      </Label>
-                      <Col md={10} xs={12}>
-                        <Input
-                          type="number"
-                          name="Age"
-                          id="Age"
+                          className="labelForm"
+                        >
+                          Name:
+                        </Label>
+                        <Col md={10} xs={12}>
+                          <Input
+                            type="text"
+                            name="Name"
+                            id="Name"
+                            size="lg"
+                            placeholder="Enter your name..."
+                            onChange={this.changeHandlerName}
+                            value={this.state.player.name}
+                          />
+                        </Col>
+                      </FormGroup>
+                      <FormGroup row>
+                        <Label
+                          for="Age"
+                          md={2}
+                          xs={12}
                           size="lg"
-                          placeholder="Enter your age..."
-                          onChange={this.changeHandlerAge}
-                          value={this.state.player.age}
-                        />
-                      </Col>
-                    </FormGroup>
-                    <FormGroup row>
-                      <Col md={{ size: 5, offset: 2 }}>
-                        <Button size="lg" color="success" type="submit">
-                          Submit
-                        </Button>
-                      </Col>
-                    </FormGroup>
-                  </Form>
+                          className="labelForm"
+                        >
+                          Age:
+                        </Label>
+                        <Col md={10} xs={12}>
+                          <Input
+                            type="number"
+                            name="Age"
+                            id="Age"
+                            size="lg"
+                            placeholder="Enter your age..."
+                            onChange={this.changeHandlerAge}
+                            value={this.state.player.age}
+                          />
+                        </Col>
+                      </FormGroup>
+                      <FormGroup row>
+                        <Col md={{ size: 5, offset: 2 }}>
+                          <Button size="lg" color="success" type="submit">
+                            Submit
+                          </Button>
+                        </Col>
+                      </FormGroup>
+                    </Form>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    ); 
+      );
+    }
   }
 
   changeHandlerName(event) {

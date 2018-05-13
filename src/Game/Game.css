@@ -1,28 +1,46 @@
 .css-grid-container1 {
-    border: 2px black;
-    border-style: solid;
-    background: black;
-    display:grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-}
-  
-
-.alignp{
-    text-align: center;
+  background: rgba(0, 0, 0, 0.3);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
 }
 
-.game{
-    border-top-style: solid;
-    border-top-width: 6px;
-    border-top-color: blue; 
+.alignp {
+  text-align: center;
 }
 
-.image1{
-    margin: auto;
-    width: 100%;
-    padding: 10px 10px;
+.game {
+  border-top-style: solid;
+  border-top-width: 6px;
+  border-top-color: blue;
+  padding-top: 0px;
 }
 
-.card-title, .card-text{
-    text-align: center;
+.cardNew {
+  border-radius: 0 !important;
+  border: 0px 0px 0px 0px;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
+}
+
+.image1 {
+  margin: auto;
+  width: 100%;
+  padding: 10px 10px;
+}
+
+.card-title,
+.card-text {
+  text-align: center;
 }
