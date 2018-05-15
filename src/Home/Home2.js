@@ -51,6 +51,9 @@ class Home2 extends Component {
               gameLevel={this.setGameLevel.bind(this)}
               levelUp={this.levelUp.bind(this)}
               getCurrentLevel={this.getCurrentLevel.bind(this)}
+              players={this.props.players} 
+              updatePlayers={this.props.updatePlayers}
+              playerId={this.props.playerId}
             />;
           </div>
         </div>

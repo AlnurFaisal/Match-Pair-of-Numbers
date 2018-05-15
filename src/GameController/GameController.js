@@ -12,13 +12,22 @@ const GameController = props => {
   const currentLevel = props.getCurrentLevel();
   if (currentLevel === 0) {
     return (
-      <Game gameLevel={props.gameLevel(currentLevel)} levelUp={props.levelUp} />
+      <Game
+        gameLevel={props.gameLevel(currentLevel)}
+        levelUp={props.levelUp}
+        players={props.players}
+        updatePlayers={props.updatePlayers}
+        playerId={props.playerId}
+      />
     );
   } else if (currentLevel === 1) {
     return (
       <Game1
         gameLevel={props.gameLevel(currentLevel)}
         levelUp={props.levelUp}
+        players={props.players}
+        updatePlayers={props.updatePlayers}
+        playerId={props.playerId}
       />
     );
   } else if (currentLevel === 2) {
@@ -26,6 +35,9 @@ const GameController = props => {
       <Game2
         gameLevel={props.gameLevel(currentLevel)}
         levelUp={props.levelUp}
+        players={props.players}
+        updatePlayers={props.updatePlayers}
+        playerId={props.playerId}
       />
     );
   } else if (currentLevel === 3) {
@@ -33,6 +45,9 @@ const GameController = props => {
       <Game3
         gameLevel={props.gameLevel(currentLevel)}
         levelUp={props.levelUp}
+        players={props.players}
+        updatePlayers={props.updatePlayers}
+        playerId={props.playerId}
       />
     );
   } else if (currentLevel === 4) {
@@ -40,6 +55,9 @@ const GameController = props => {
       <Game4
         gameLevel={props.gameLevel(currentLevel)}
         levelUp={props.levelUp}
+        players={props.players}
+        updatePlayers={props.updatePlayers}
+        playerId={props.playerId}
       />
     );
   } else if (currentLevel === 5) {
@@ -47,6 +65,9 @@ const GameController = props => {
       <Game5
         gameLevel={props.gameLevel(currentLevel)}
         levelUp={props.levelUp}
+        players={props.players}
+        updatePlayers={props.updatePlayers}
+        playerId={props.playerId}
       />
     );
   } else if (currentLevel === 6) {
@@ -54,6 +75,9 @@ const GameController = props => {
       <Game6
         gameLevel={props.gameLevel(currentLevel)}
         levelUp={props.levelUp}
+        players={props.players}
+        updatePlayers={props.updatePlayers}
+        playerId={props.playerId}
       />
     );
   } else if (currentLevel === 7) {
@@ -61,6 +85,9 @@ const GameController = props => {
       <Game7
         gameLevel={props.gameLevel(currentLevel)}
         levelUp={props.levelUp}
+        players={props.players}
+        updatePlayers={props.updatePlayers}
+        playerId={props.playerId}
       />
     );
   }

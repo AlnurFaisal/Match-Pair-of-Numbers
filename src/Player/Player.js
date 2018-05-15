@@ -1,18 +1,17 @@
 import React, { Component } from "react";
 import { Button, Col, Form, FormGroup, Label, Input } from "reactstrap";
 import { Redirect } from "react-router-dom";
+import uuidv4 from "uuid/v4";
 import "./Player.css";
 
 class Player extends Component {
   constructor() {
     super();
     this.state = {
-      player: {
-        name: "",
-        age: "",
-        score: 0,
-        level: 0
-      },
+      name: "",
+      age: "",
+      score: 0,
+      level: 0,
       redirect: false,
       home: false
     };
@@ -23,8 +22,6 @@ class Player extends Component {
   }
 
   render() {
-    console.log(this.props.players);
-    console.log(this.state.player);
     if (this.state.redirect) {
       return <Redirect to="/game" />;
     } else {
@@ -58,7 +55,7 @@ class Player extends Component {
                             size="lg"
                             placeholder="Enter your name..."
                             onChange={this.changeHandlerName}
-                            value={this.state.player.name}
+                            value={this.state.name}
                           />
                         </Col>
                       </FormGroup>
@@ -80,7 +77,7 @@ class Player extends Component {
                             size="lg"
                             placeholder="Enter your age..."
                             onChange={this.changeHandlerAge}
-                            value={this.state.player.age}
+                            value={this.state.age}
                           />
                         </Col>
                       </FormGroup>
@@ -104,26 +101,29 @@ class Player extends Component {
 
   changeHandlerName(event) {
     this.setState({
-      player: {
-        name: event.target.value
-      }
+      name: event.target.value
     });
   }
 
   changeHandlerAge(event) {
     this.setState({
-      player: {
-        age: event.target.value
-      }
+      age: event.target.value
     });
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    const copyPlayer = { ...this.state.player };
+    const myId = uuidv4();
+    const player = {
+      id: myId,
+      name: this.state.name,
+      age: this.state.age,
+      score: this.state.score,
+      level: this.state.level
+    };
     const copyPlayers = [...this.props.players];
-    copyPlayers.push(copyPlayer);
-    this.props.updatePlayers(copyPlayers);
+    copyPlayers.push(player);
+    this.props.updatePlayers(copyPlayers, myId, true);
     this.setState({
       redirect: true
     });

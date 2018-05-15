@@ -7,7 +7,6 @@ class Home extends Component {
   constructor() {
     super();
     this.state = {
-      players: [],
       redirect: false
     };
 
@@ -16,7 +15,7 @@ class Home extends Component {
 
   render() {
     if(this.state.redirect) {
-      return <Player players={this.state.players} updatePlayers={this.updatePlayers.bind(this)}/>;
+      return <Player players={this.props.players} updatePlayers={this.props.updatePlayers}/>;
     }
     return (
       <div>
@@ -42,12 +41,6 @@ class Home extends Component {
   runRedirect() {
     this.setState({
       redirect: true
-    });
-  }
-
-  updatePlayers(arr) {
-    this.setState({
-      players: arr
     });
   }
 }
