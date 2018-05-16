@@ -3,7 +3,7 @@ import Game from "./Game";
 import { shallow } from "enzyme";
 
 describe("Game Component", () => {
-  it("should generate the game component", () => {
+  it.skip("should generate the game component", () => {
     const element = { value: 1, isMatched: false, show: false };
     const myMockFunction = jest.fn(4);
     const wrapper = shallow(<Game gameLevel="4" />);

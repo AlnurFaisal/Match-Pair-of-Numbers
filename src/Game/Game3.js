@@ -15,10 +15,21 @@ class Game3 extends Component {
       currentIndex: null,
       countMatches: 0,
       completed: false,
-      modal: false
+      modal: false,
+      players: props.players,
+      id: props.playerId,
+      score: null,
+      name: null
     };
 
     this.toggle = this.toggle.bind(this);
+    this.getScore = this.getScore.bind(this);
+    this.getName = this.getName.bind(this);
+  }
+
+  componentWillMount() {
+    this.getScore();
+    this.getName();
   }
 
   toggle() {
@@ -27,9 +38,28 @@ class Game3 extends Component {
     });
   }
 
+  getScore() {
+    this.state.players.forEach(player => {
+      console.log(player.id);
+      if(player.id === this.state.id) {
+        this.setState({
+          score: player.score
+        });
+      }
+    });
+  }
+
+  getName() {
+    this.state.players.forEach(player => {
+      if(player.id === this.state.id) {
+        this.setState({
+          name: player.name
+        });
+      }
+    });
+  }
+
   render() {
-    console.log(this.state.countMatches);
-    console.log(this.state.gameMap);
     return (
       <div className="row">
         <div className="col-lg-9 col-md-12 col-xs-12">
@@ -60,7 +90,8 @@ class Game3 extends Component {
         <div className="cardNew">
           <div className="card-body game">
               <h6 className="card-title">Current Level: Level {this.props.gameLevel.level}</h6>
-              <p className="card-text">Score: {this.state.completed ? this.props.gameLevel.points : 30}</p>
+              <p className="card-text"> PlayerName: {this.state.name} <br />
+              Score: {this.state.completed ? this.props.gameLevel.points : this.state.score}</p>
               <div className="row">
                 <div className="col-md-12 col-xs-12">
                   <Button size="lg" color="success" onClick={this.props.levelUp} 
@@ -99,6 +130,13 @@ class Game3 extends Component {
         this.setState({
           completed: true
         });
+        const arr = [
+          {
+            score: this.props.gameLevel.points,
+            level: this.props.gameLevel.level
+          }
+        ]
+        this.props.updatePlayers(arr, false);
       }
     }
   }

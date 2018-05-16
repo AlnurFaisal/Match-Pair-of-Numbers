@@ -26,6 +26,7 @@ class App extends Component {
   }
 
   render() {
+   console.log(this.state.id);
    return (
      <div>
       <BrowserRouter>
@@ -35,9 +36,9 @@ class App extends Component {
    );
   }
 
-  updatePlayers(arr, id, bool) {
-    if(bool === true){
-      // if bool is true, it is creating a new account
+  updatePlayers(arr, id) {
+    if(id){
+      // if id is true, it is creating a new account
       // array may contain multiple object
       this.setState({
         players: arr,

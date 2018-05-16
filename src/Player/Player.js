@@ -114,16 +114,19 @@ class Player extends Component {
   handleSubmit(event) {
     event.preventDefault();
     const myId = uuidv4();
+    const date = new Date();
+    const strDate = date.getTime();
     const player = {
       id: myId,
       name: this.state.name,
       age: this.state.age,
       score: this.state.score,
-      level: this.state.level
+      level: this.state.level,
+      date_created: strDate
     };
     const copyPlayers = [...this.props.players];
     copyPlayers.push(player);
-    this.props.updatePlayers(copyPlayers, myId, true);
+    this.props.updatePlayers(copyPlayers, myId);
     this.setState({
       redirect: true
     });

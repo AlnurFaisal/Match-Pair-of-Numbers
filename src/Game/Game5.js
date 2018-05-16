@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import Square from "../Square/Square";
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { doubleArray, shuffle, generatePositiveNumber } from "../utils/utils";
-import { NavLink } from "react-router-dom";
+import { NavLink } from 'react-router-dom';
 import "./Game.css";
-import successlogo from "../img/ok.svg";
+import successlogo from '../img/ok.svg';
 
 class Game5 extends Component {
   constructor(props) {
@@ -15,10 +15,21 @@ class Game5 extends Component {
       currentIndex: null,
       countMatches: 0,
       completed: false,
-      modal: false
+      modal: false,
+      players: props.players,
+      id: props.playerId,
+      score: null,
+      name: null
     };
 
     this.toggle = this.toggle.bind(this);
+    this.getScore = this.getScore.bind(this);
+    this.getName = this.getName.bind(this);
+  }
+
+  componentWillMount() {
+    this.getScore();
+    this.getName();
   }
 
   toggle() {
@@ -27,99 +38,105 @@ class Game5 extends Component {
     });
   }
 
+  getScore() {
+    this.state.players.forEach(player => {
+      console.log(player.id);
+      if(player.id === this.state.id) {
+        this.setState({
+          score: player.score
+        });
+      }
+    });
+  }
+
+  getName() {
+    this.state.players.forEach(player => {
+      if(player.id === this.state.id) {
+        this.setState({
+          name: player.name
+        });
+      }
+    });
+  }
+
   render() {
-    console.log(this.state.countMatches);
-    console.log(this.state.gameMap);
     return (
       <div className="row">
         <div className="col-lg-9 col-md-12 col-xs-12">
           <div className="css-grid-container1">
             {this.state.gameMap.map((element, i) => {
               return (
-                <Square
-                  index={i}
-                  key={i}
-                  toggleShow={this.toggleShow.bind(this, i)}
-                  toggleShowForPair={this.toggleShowForPair.bind(this, i)}
-                  numberObj={element}
-                  setCurrentValue={this.setCurrentValue.bind(this)}
-                  setCurrentIndex={this.setCurrentIndex.bind(this)}
-                  setMatch={this.setMatch.bind(this)}
-                  checkIfMatch={this.checkIfMatch.bind(this)}
-                  getCurrentValue={this.getCurrentValue.bind(this)}
-                  getMatches={this.getMatches.bind(this, i)}
-                  popup={this.popup.bind(this)}
-                  timer={this.props.gameLevel.time}
-                />
+                  <Square
+                    index={i}
+                    key={i}
+                    toggleShow={this.toggleShow.bind(this, i)}
+                    toggleShowForPair={this.toggleShowForPair.bind(this, i)}
+                    numberObj={element}
+                    setCurrentValue={this.setCurrentValue.bind(this)}
+                    setCurrentIndex={this.setCurrentIndex.bind(this)}
+                    setMatch={this.setMatch.bind(this)}
+                    checkIfMatch={this.checkIfMatch.bind(this)}
+                    getCurrentValue={this.getCurrentValue.bind(this)}
+                    getMatches={this.getMatches.bind(this, i)}
+                    popup={this.popup.bind(this)}
+                    timer={this.props.gameLevel.time}
+                  />
               );
             })}
           </div>
           <br />
         </div>
         <div className="col-lg-3 col-md-12 col-xs-12">
-          <div className="cardNew">
-            <div className="card-body game">
-              <h6 className="card-title">
-                Current Level: Level {this.props.gameLevel.level}
-              </h6>
-              <p className="card-text">
-                Score: {this.state.completed ? this.props.gameLevel.points : 75}
-              </p>
+        <div className="cardNew">
+          <div className="card-body game">
+              <h6 className="card-title">Current Level: Level {this.props.gameLevel.level}</h6>
+              <p className="card-text"> PlayerName: {this.state.name} <br />
+              Score: {this.state.completed ? this.props.gameLevel.points : this.state.score}</p>
               <div className="row">
                 <div className="col-md-12 col-xs-12">
                   <Button size="lg" color="success" onClick={this.props.levelUp} 
-                    className={this.state.completed ? "btn btn-success" : "btn btn-success"} 
-                    block disabled={!this.state.completed}>Continue</Button>
-                    <br />
+                  className={this.state.completed ? "btn btn-success" : "btn btn-success"} 
+                  block disabled={!this.state.completed}>Continue</Button>
+                  <br />
                 </div>
                 <div className="col-md-12 col-xs-12">
-                  <NavLink to="/" className="btn btn-primary btn-lg btn-block">
-                    Quit Game
-                  </NavLink>
+                  <NavLink to ="/" className="btn btn-primary btn-lg btn-block">Quit Game</NavLink>
                 </div>
               </div>
-            </div>
           </div>
         </div>
-        <Modal
-          isOpen={this.state.modal}
-          toggle={this.toggle}
-          className={this.props.className}
-        >
-          <ModalHeader toggle={this.toggle}>
-            Level {this.props.gameLevel.level} Completed
-          </ModalHeader>
-          <ModalBody>
-            <img
-              src={successlogo}
-              alt="Success"
-              height="100"
-              width="100"
-              className="image1"
-            />
-            <h2 className="alignp">Congratulations!!</h2>{" "}
-            <p className="lead alignp">Please proceed to next level!</p>
-          </ModalBody>
-          <ModalFooter>
-            <Button color="primary" onClick={this.toggle}>
-              Close
-            </Button>
-          </ModalFooter>
+        </div>
+        <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+        <ModalHeader toggle={this.toggle}>Level {this.props.gameLevel.level} Completed</ModalHeader>
+        <ModalBody>
+            <img src={successlogo} alt="Success" height="100" width="100" className="image1" />
+            <h2 className="alignp">Congratulations!!</h2> <p className="lead alignp">Please proceed to next level!</p>
+        </ModalBody>
+        <ModalFooter>
+          <Button color="primary" onClick={this.toggle}>Close</Button>
+        </ModalFooter>
         </Modal>
-      </div>
+    </div>
     );
   }
 
-  popup() {
+  popup(){
     const copy = [...this.state.gameMap];
     const copyCountMatches = this.state.countMatches + 2;
-    const size = Object.keys(copy).length;
-    if (copyCountMatches !== 0) {
-      if (copyCountMatches === size) {
+    const size = Object.keys(copy).length; 
+    if(copyCountMatches !== 0){
+      if(copyCountMatches === size){
         this.toggle();
         this.setState({
           completed: true
         });
+        const arr = [
+          {
+            score: this.props.gameLevel.points,
+            level: this.props.gameLevel.level
+          }
+        ]
+        this.props.updatePlayers(arr, false);
       }
     }
   }
@@ -146,7 +163,7 @@ class Game5 extends Component {
           gameMap: copy
         });
       }
-    }, 500);
+    } , 500) 
   }
 
   setCurrentValue(element) {
@@ -181,14 +198,11 @@ class Game5 extends Component {
   }
 
   checkIfMatch(value, index) {
-    if (
-      value === this.state.currentValue &&
-      index !== this.state.currentIndex
-    ) {
+    if (value === this.state.currentValue && index !== this.state.currentIndex) {
       const copyCountMatches = this.state.countMatches + 2;
       this.setState({
         countMatches: copyCountMatches
-      });
+      }); 
       return true;
     } else {
       return false;
