@@ -18,7 +18,7 @@ const HomeNav = props => (
       render={() => (
         <Home2 players={props.players} updatePlayers={props.updatePlayers} playerId={props.playerId} />
       )}
-    />} />
+    />
   </div>
 );
 

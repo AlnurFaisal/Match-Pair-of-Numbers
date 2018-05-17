@@ -15,7 +15,7 @@ class Home extends Component {
 
   render() {
     if(this.state.redirect) {
-      return <Player players={this.props.players} updatePlayers={this.props.updatePlayers}/>;
+      return <Player players={this.props.players} updatePlayers={this.props.updatePlayers} />;
     }
     return (
       <div>
