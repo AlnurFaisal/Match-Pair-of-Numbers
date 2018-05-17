@@ -43,7 +43,7 @@ class Home extends Component {
                 <h1 className="hometitle">Find The Pair</h1>
                 <p className="hometext">Click on the button below to begin!</p>
               </div>
-              <div className="offset-md-3 col-md-6 col-xs-12">
+              <div className="offset-lg-3 offset-md-3 col-lg-6 col-md-6 col-sm-12 col-xs-12">
                 <Button
                   size="lg"
                   color="success"

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Card, Button } from "reactstrap";
+import { Button } from "reactstrap";
 import Home from "../Home/Home";
 import "./Leaderboard.css";
 
@@ -30,32 +30,34 @@ class Leaderboard extends Component {
             <h1 className="headline" align="center">
               Leaderboard
             </h1>
-            <Card body>
-              <div className="table-responsive">
-                <table className="table">
-                  <thead className="thead-dark">
-                    <tr>
-                      <th scope="col">#</th>
-                      <th scope="col">Name</th>
-                      <th scope="col">Level</th>
-                      <th scope="col">Score</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {this.state.players.map((element, i) => {
-                      return (
-                        <tr key={i}>
-                          <th scope="row">{i + 1}</th>
-                          <td>{element.name}</td>
-                          <td>{element.level}</td>
-                          <td>{element.score}</td>
-                        </tr>
-                      );
-                    })}
-                  </tbody>
-                </table>
+            <div body className="card cardBorder">
+              <div className="card-body cardNew">
+                <div className="table-responsive">
+                  <table className="table">
+                    <thead className="thead-dark">
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Level</th>
+                        <th scope="col">Score</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {this.state.players.map((element, i) => {
+                        return (
+                          <tr key={i}>
+                            <th scope="row">{i + 1}</th>
+                            <td>{element.name}</td>
+                            <td>{element.level}</td>
+                            <td>{element.score}</td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                </div>
               </div>
-            </Card>
+            </div>
             <br />
             <div className="offset-md-3 col-md-6 col-xs-12">
               <Button
