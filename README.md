@@ -19,5 +19,5 @@ There are different levels to the game. In order to move on to the next level, y
 
 ## Live Demo
 
-https://lychee-pudding-51897.herokuapp.com/
+https://findpairs.herokuapp.com/
 
