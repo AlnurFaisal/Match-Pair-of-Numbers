@@ -2,7 +2,7 @@
   "name": "mainapp",
   "version": "0.1.0",
   "engines": {
-    "node": "12.13",
+    "node": "10.16",
     "npm": "6.x",
     "yarn": "1.x"
   },
