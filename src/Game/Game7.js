@@ -119,20 +119,20 @@ class Game7 extends Component {
           <div className="col-lg-3 col-md-12 col-xs-12">
             <div className="cardNew">
               <div className="card-body game">
-                <h6 className="card-title">
+                <h4 className="card-title">
                   Current Level: Level {this.props.gameLevel.level}
-                </h6>
+                </h4>
                 <p className="card-text">
-                  {" "}
+                  Attempts Remaining: {this.fetchRemainingAttempts()}
+                  <br />
+                  Difficulty: {this.state.difficulty}
+                  <br />
+                  <br />
                   PlayerName: {this.state.name} <br />
                   Score:{" "}
                   {this.state.completed
                     ? this.props.gameLevel.points
                     : this.state.score}
-                  <br />
-                  Difficulty: {this.state.difficulty}
-                  <br />
-                  Attempts Remaining: {this.fetchRemainingAttempts()}
                 </p>
                 <div className="row">
                   <div className="col-md-12 col-xs-12">
