@@ -31,7 +31,7 @@ class Leaderboard extends Component {
               Leaderboard
             </h1>
             <div className="card cardBorder">
-              <div className="card-body cardNew">
+              <div className="card-body cardNew" style={{ padding: 0 }}>
                 <div className="table-responsive">
                   <table className="table">
                     <thead className="thead-dark">
