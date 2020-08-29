@@ -2,9 +2,10 @@ import React, { Component } from "react";
 import Square from "../Square/Square";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import { doubleArray, shuffle, generatePositiveNumber } from "../utils/utils";
-import { NavLink } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
 import "./Game.css";
 import successlogo from "../img/ok.svg";
+import gameoverlogo from "../img/traffic.svg";
 
 class Game7 extends Component {
   constructor(props) {
@@ -16,20 +17,38 @@ class Game7 extends Component {
       countMatches: 0,
       completed: false,
       modal: false,
+      gameover: false,
       players: props.players,
       id: props.playerId,
       score: null,
-      name: null
+      name: null,
+      difficulty: null,
+      failedAttempts: 0,
+      redirect: false
     };
 
     this.toggle = this.toggle.bind(this);
-    this.getScore = this.getScore.bind(this);
-    this.getName = this.getName.bind(this);
+    this.toggleGameOver = this.toggleGameOver.bind(this);
+    this.getDetails = this.getDetails.bind(this);
+    this.fetchRemainingAttempts = this.fetchRemainingAttempts.bind(this);
+    this.updateFailedAttempts = this.updateFailedAttempts.bind(this);
+    this.triggerRedirect = this.triggerRedirect.bind(this);
   }
 
   componentWillMount() {
-    this.getScore();
-    this.getName();
+    this.getDetails();
+  }
+
+  toggleGameOver() {
+    this.setState({
+      gameover: true
+    });
+  }
+
+  triggerRedirect() {
+    this.setState({
+      redirect: true
+    });
   }
 
   toggle() {
@@ -38,118 +57,161 @@ class Game7 extends Component {
     });
   }
 
-  getScore() {
-    this.state.players.forEach(player => {
-      console.log(player.id);
-      if (player.id === this.state.id) {
-        this.setState({
-          score: player.score
-        });
-      }
+  fetchRemainingAttempts() {
+    const difficulty = this.props.difficultyLevel;
+    const maxAttempt = difficulty[`${this.state.difficulty}`];
+    return maxAttempt - this.state.failedAttempts;
+  }
+
+  updateFailedAttempts() {
+    let currentFailedAttempts = this.state.failedAttempts;
+    currentFailedAttempts = currentFailedAttempts + 1;
+    this.setState({
+      failedAttempts: currentFailedAttempts
     });
   }
 
-  getName() {
+  getDetails() {
     this.state.players.forEach(player => {
+      console.log(player.id);
+      console.log(player.name);
+      console.log(player.difficulty);
       if (player.id === this.state.id) {
         this.setState({
-          name: player.name
+          score: player.score,
+          name: player.name,
+          difficulty: player.difficulty
         });
       }
     });
   }
 
   render() {
-    return (
-      <div className="row">
-        <div className="col-lg-9 col-md-12 col-xs-12">
-          <div className="css-grid-container1">
-            {this.state.gameMap.map((element, i) => {
-              return (
-                <Square
-                  index={i}
-                  key={i}
-                  toggleShow={this.toggleShow.bind(this, i)}
-                  toggleShowForPair={this.toggleShowForPair.bind(this, i)}
-                  numberObj={element}
-                  setCurrentValue={this.setCurrentValue.bind(this)}
-                  setCurrentIndex={this.setCurrentIndex.bind(this)}
-                  setMatch={this.setMatch.bind(this)}
-                  checkIfMatch={this.checkIfMatch.bind(this)}
-                  getCurrentValue={this.getCurrentValue.bind(this)}
-                  getMatches={this.getMatches.bind(this, i)}
-                  popup={this.popup.bind(this)}
-                  timer={this.props.gameLevel.time}
-                />
-              );
-            })}
+    if (this.state.redirect) {
+      return <Redirect to="/" />;
+    } else {
+      return (
+        <div className="row">
+          <div className="col-lg-9 col-md-12 col-xs-12">
+            <div className="css-grid-container1">
+              {this.state.gameMap.map((element, i) => {
+                return (
+                  <Square
+                    index={i}
+                    key={i}
+                    toggleShow={this.toggleShow.bind(this, i)}
+                    toggleShowForPair={this.toggleShowForPair.bind(this, i)}
+                    numberObj={element}
+                    setCurrentValue={this.setCurrentValue.bind(this)}
+                    setCurrentIndex={this.setCurrentIndex.bind(this)}
+                    setMatch={this.setMatch.bind(this)}
+                    checkIfMatch={this.checkIfMatch.bind(this)}
+                    getCurrentValue={this.getCurrentValue.bind(this)}
+                    getMatches={this.getMatches.bind(this, i)}
+                    popup={this.popup.bind(this)}
+                    timer={this.props.gameLevel.time}
+                  />
+                );
+              })}
+            </div>
+            <br />
           </div>
-          <br />
-        </div>
-        <div className="col-lg-3 col-md-12 col-xs-12">
-          <div className="cardNew">
-            <div className="card-body game">
-              <h6 className="card-title">
-                Current Level: Level {this.props.gameLevel.level}
-              </h6>
-              <p className="card-text">
-                {" "}
-                PlayerName: {this.state.name} <br />
-                Score:{" "}
-                {this.state.completed
-                  ? this.props.gameLevel.points
-                  : this.state.score}
-              </p>
-              <div className="row">
-                <div className="col-md-12 col-xs-12">
-                  <Button
-                    size="lg"
-                    color="success"
-                    className="btn btn-success"
-                    block
-                    disabled
-                  >
-                    Continue
-                  </Button>
-
+          <div className="col-lg-3 col-md-12 col-xs-12">
+            <div className="cardNew">
+              <div className="card-body game">
+                <h6 className="card-title">
+                  Current Level: Level {this.props.gameLevel.level}
+                </h6>
+                <p className="card-text">
+                  {" "}
+                  PlayerName: {this.state.name} <br />
+                  Score:{" "}
+                  {this.state.completed
+                    ? this.props.gameLevel.points
+                    : this.state.score}
                   <br />
-                </div>
-                <div className="col-md-12 col-xs-12">
-                  <NavLink to="/" className="btn btn-primary btn-lg btn-block">
-                    Quit Game
-                  </NavLink>
+                  Difficulty: {this.state.difficulty}
+                  <br />
+                  Attempts Remaining: {this.fetchRemainingAttempts()}
+                </p>
+                <div className="row">
+                  <div className="col-md-12 col-xs-12">
+                    <Button
+                      size="lg"
+                      color="success"
+                      className="btn btn-success"
+                      block
+                      disabled
+                    >
+                      Continue
+                    </Button>
+                    <br />
+                  </div>
+                  <div className="col-md-12 col-xs-12">
+                    <NavLink
+                      to="/"
+                      className="btn btn-primary btn-lg btn-block"
+                    >
+                      Quit Game
+                    </NavLink>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
+          <Modal
+            isOpen={this.state.modal}
+            toggle={this.toggle}
+            className={this.props.className}
+          >
+            <ModalHeader toggle={this.toggle}>
+              Level {this.props.gameLevel.level} Completed
+            </ModalHeader>
+            <ModalBody>
+              <img
+                src={successlogo}
+                alt="Success"
+                height="100"
+                width="100"
+                className="image1"
+              />
+              <h2 className="alignp">Congratulations!!</h2>{" "}
+              <p className="lead alignp">
+                You have successfully completed the game!
+              </p>
+            </ModalBody>
+            <ModalFooter>
+              <Button color="primary" onClick={this.toggle}>
+                Close
+              </Button>
+            </ModalFooter>
+          </Modal>
+          <Modal isOpen={this.state.gameover} className={this.props.className}>
+            <ModalHeader>
+              Level {this.props.gameLevel.level} Game Over
+            </ModalHeader>
+            <ModalBody>
+              <img
+                src={gameoverlogo}
+                alt="Success"
+                height="100"
+                width="100"
+                className="image1"
+              />
+              <h2 className="alignp">Game Over!</h2>{" "}
+              <p className="lead alignp">
+                You have exceeded the max attempt for this level!
+              </p>
+            </ModalBody>
+            <ModalFooter>
+              <Button color="primary" onClick={this.triggerRedirect}>
+                Close
+              </Button>
+            </ModalFooter>
+          </Modal>
         </div>
-        <Modal
-          isOpen={this.state.modal}
-          toggle={this.toggle}
-          className={this.props.className}
-        >
-          <ModalHeader toggle={this.toggle}>
-            Level {this.props.gameLevel.level} Completed
-          </ModalHeader>
-          <ModalBody>
-            <img
-              src={successlogo}
-              alt="Success"
-              height="100"
-              width="100"
-              className="image1"
-            />
-            <h2 className="alignp">Congratulations!!</h2>{" "}
-            <p className="lead alignp">You have successfully completed the game!</p>
-          </ModalBody>
-          <ModalFooter>
-            <Button color="primary" onClick={this.toggle}>
-              Close
-            </Button>
-          </ModalFooter>
-        </Modal>
-      </div>
-    );
+      );
+    }
   }
 
   popup() {
@@ -240,6 +302,11 @@ class Game7 extends Component {
       });
       return true;
     } else {
+      if (this.fetchRemainingAttempts() === 0) {
+        this.toggleGameOver();
+      } else {
+        this.updateFailedAttempts();
+      }
       return false;
     }
   }

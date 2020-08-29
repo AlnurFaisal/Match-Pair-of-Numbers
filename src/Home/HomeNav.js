@@ -16,7 +16,11 @@ const HomeNav = props => (
       exact
       path="/game"
       render={() => (
-        <Home2 players={props.players} updatePlayers={props.updatePlayers} playerId={props.playerId} />
+        <Home2
+          players={props.players}
+          updatePlayers={props.updatePlayers}
+          playerId={props.playerId}
+        />
       )}
     />
   </div>

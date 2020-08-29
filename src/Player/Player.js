@@ -10,14 +10,16 @@ class Player extends Component {
     this.state = {
       name: "",
       age: "",
+      difficulty: "easy",
       score: 0,
-      level: 0,
+      level: 1,
       redirect: false,
       home: false
     };
 
     this.changeHandlerName = this.changeHandlerName.bind(this);
     this.changeHandlerAge = this.changeHandlerAge.bind(this);
+    this.changeHandlerDifficulty = this.changeHandlerDifficulty.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -32,7 +34,7 @@ class Player extends Component {
               <br />
               <br />
               <div className="wrapper">
-                <div body className="cardNew">
+                <div className="cardNew">
                   <div className="card-body styleCard">
                     <h1 className="playertitle">Player Info:</h1>
                     <br />
@@ -42,7 +44,7 @@ class Player extends Component {
                           for="Name"
                           md={2}
                           xs={12}
-                          size="lg"
+                          bzsize="lg"
                           className="labelForm"
                         >
                           Name:
@@ -52,7 +54,7 @@ class Player extends Component {
                             type="text"
                             name="Name"
                             id="Name"
-                            size="lg"
+                            bzsize="lg"
                             placeholder="Enter your name..."
                             onChange={this.changeHandlerName}
                             value={this.state.name}
@@ -64,7 +66,7 @@ class Player extends Component {
                           for="Age"
                           md={2}
                           xs={12}
-                          size="lg"
+                          bzsize="lg"
                           className="labelForm"
                         >
                           Age:
@@ -74,7 +76,7 @@ class Player extends Component {
                             type="number"
                             name="Age"
                             id="Age"
-                            size="lg"
+                            bzsize="lg"
                             placeholder="Enter your age..."
                             onChange={this.changeHandlerAge}
                             value={this.state.age}
@@ -82,8 +84,33 @@ class Player extends Component {
                         </Col>
                       </FormGroup>
                       <FormGroup row>
+                        <Label
+                          for="Difficulty"
+                          md={2}
+                          xs={12}
+                          bzsize="lg"
+                          className="labelForm"
+                        >
+                          Difficulty:
+                        </Label>
+                        <Col md={10} xs={12}>
+                          <Input
+                            type="select"
+                            name="Difficulty"
+                            id="Difficulty"
+                            bzsize="lg"
+                            onChange={this.changeHandlerDifficulty}
+                            value={this.state.difficulty}
+                          >
+                            <option value="easy">Easy</option>
+                            <option value="medium">Medium</option>
+                            <option value="hard">Hard</option>
+                          </Input>
+                        </Col>
+                      </FormGroup>
+                      <FormGroup row>
                         <Col md={{ size: 5, offset: 2 }}>
-                          <Button size="lg" color="success" type="submit">
+                          <Button bzsize="lg" color="success" type="submit">
                             Submit
                           </Button>
                         </Col>
@@ -97,6 +124,12 @@ class Player extends Component {
         </div>
       );
     }
+  }
+
+  changeHandlerDifficulty(event) {
+    this.setState({
+      difficulty: event.target.value
+    });
   }
 
   changeHandlerName(event) {
@@ -120,6 +153,7 @@ class Player extends Component {
       id: myId,
       name: this.state.name,
       age: this.state.age,
+      difficulty: this.state.difficulty,
       score: this.state.score,
       level: this.state.level,
       date_created: strDate

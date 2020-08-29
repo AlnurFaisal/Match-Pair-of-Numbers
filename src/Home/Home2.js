@@ -15,7 +15,17 @@ class Home2 extends Component {
         { level: 7, squares: 25, points: 125, time: 16000 },
         { level: 8, squares: 30, points: 150, time: 18000 }
       ],
-      currentLevel: 0
+      currentLevel: 0,
+      difficultyLevels: [
+        { easy: 3, medium: 2, hard: 1 },
+        { easy: 4, medium: 3, hard: 2 },
+        { easy: 5, medium: 4, hard: 3 },
+        { easy: 6, medium: 5, hard: 4 },
+        { easy: 7, medium: 6, hard: 5 },
+        { easy: 10, medium: 8, hard: 6 },
+        { easy: 13, medium: 10, hard: 7 },
+        { easy: 15, medium: 12, hard: 8 }
+      ]
     };
   }
 
@@ -51,10 +61,12 @@ class Home2 extends Component {
               gameLevel={this.setGameLevel.bind(this)}
               levelUp={this.levelUp.bind(this)}
               getCurrentLevel={this.getCurrentLevel.bind(this)}
-              players={this.props.players} 
+              players={this.props.players}
               updatePlayers={this.props.updatePlayers}
               playerId={this.props.playerId}
-            />;
+              difficultyLevels={this.state.difficultyLevels}
+            />
+            ;
           </div>
         </div>
       </div>

@@ -30,7 +30,7 @@ class Leaderboard extends Component {
             <h1 className="headline" align="center">
               Leaderboard
             </h1>
-            <div body className="card cardBorder">
+            <div className="card cardBorder">
               <div className="card-body cardNew">
                 <div className="table-responsive">
                   <table className="table">
@@ -39,6 +39,7 @@ class Leaderboard extends Component {
                         <th scope="col">#</th>
                         <th scope="col">Name</th>
                         <th scope="col">Level</th>
+                        <th scope="col">Difficulty</th>
                         <th scope="col">Score</th>
                       </tr>
                     </thead>
@@ -49,6 +50,7 @@ class Leaderboard extends Component {
                             <th scope="row">{i + 1}</th>
                             <td>{element.name}</td>
                             <td>{element.level}</td>
+                            <td>{element.difficulty}</td>
                             <td>{element.score}</td>
                           </tr>
                         );

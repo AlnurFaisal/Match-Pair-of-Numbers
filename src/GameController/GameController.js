@@ -18,6 +18,7 @@ const GameController = props => {
         players={props.players}
         updatePlayers={props.updatePlayers}
         playerId={props.playerId}
+        difficultyLevel={props.difficultyLevels[0]}
       />
     );
   } else if (currentLevel === 1) {
@@ -28,6 +29,7 @@ const GameController = props => {
         players={props.players}
         updatePlayers={props.updatePlayers}
         playerId={props.playerId}
+        difficultyLevel={props.difficultyLevels[1]}
       />
     );
   } else if (currentLevel === 2) {
@@ -38,6 +40,7 @@ const GameController = props => {
         players={props.players}
         updatePlayers={props.updatePlayers}
         playerId={props.playerId}
+        difficultyLevel={props.difficultyLevels[2]}
       />
     );
   } else if (currentLevel === 3) {
@@ -48,6 +51,7 @@ const GameController = props => {
         players={props.players}
         updatePlayers={props.updatePlayers}
         playerId={props.playerId}
+        difficultyLevel={props.difficultyLevels[3]}
       />
     );
   } else if (currentLevel === 4) {
@@ -58,6 +62,7 @@ const GameController = props => {
         players={props.players}
         updatePlayers={props.updatePlayers}
         playerId={props.playerId}
+        difficultyLevel={props.difficultyLevels[4]}
       />
     );
   } else if (currentLevel === 5) {
@@ -68,6 +73,7 @@ const GameController = props => {
         players={props.players}
         updatePlayers={props.updatePlayers}
         playerId={props.playerId}
+        difficultyLevel={props.difficultyLevels[5]}
       />
     );
   } else if (currentLevel === 6) {
@@ -78,6 +84,7 @@ const GameController = props => {
         players={props.players}
         updatePlayers={props.updatePlayers}
         playerId={props.playerId}
+        difficultyLevel={props.difficultyLevels[6]}
       />
     );
   } else if (currentLevel === 7) {
@@ -88,6 +95,7 @@ const GameController = props => {
         players={props.players}
         updatePlayers={props.updatePlayers}
         playerId={props.playerId}
+        difficultyLevel={props.difficultyLevels[7]}
       />
     );
   }
